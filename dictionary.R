@@ -53,12 +53,22 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
   do.call(rbind,.) %>% set_names(c('code','label','varname'));
 
 # read in data -----------------------------------------------------------------
-dat0 <- with(dct0,tread(inputdata_ncdb,read_fwf
+#' hardcoding the number of rows so that the same random sample gets chosen each
+#' run of these scripts. Don't change until you are absolutely positively 
+#' certain that method development/testing/validation and you have committed to
+#' publishing its results no matter what they may be.
+#' 
+#' Or if you obtained a different year or eligibility set of course.
+input_nrows <- 465126;
+tseed(project_seed);
+if(!exists('use_all_data'))
+
+system.time(dat0 <- with(dct0,tread(inputdata_ncdb,read_fwf
                         ,col_positions = fwf_positions(start,stop,colname)
-                        ,n_max=20
+                        #,n_max=47000
                         ,col_types = do.call(cols,as.list(set_names(recode(
                           type,str='c',byte='l',int='i',long='n',float='n'
-                          ),colname)))));
+                          ),colname))))));
 
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 

@@ -1,7 +1,7 @@
 #' ---
 #' title: "Generic R Project Configuration File"
 #' author: "Alex F. Bokov, Ph.D."
-#' date: "08/03/2018"
+#' date: "10/18/2018"
 #' ---
 #' 
 #' Please copy this file to `config.R`, edit that copy, and copy it over to
@@ -10,22 +10,14 @@
 #' actually get called by `run.R`. A file needs to be called `config.R` in order
 #' to be used as a source of configuration information by our scripts
 #' 
-#' ## Used by all
-#' Replace the following with the full path to the actual directory that 
-#' resulted after you ran `git clone git@github.com:UTHSCSA-CIRD/THISREPO`
-#' Here is mine...
-.workdir <- '/tmp/THISREPO/';
-#' ## Used by data.R. Please put a path to your nsqip CSV file here.
-inputdata <- 'local/in/RAWDATA.tsv';
-#' 
-#' For some projects we might need to create additional input variables named 
-#' following the pattern `inputdata_FOO`
-#' ## Cached previous results (WIP)
-#incache_run <- 'local/in/THISREPO_SCRIPTNAME_MD5HASHSTRING.rdata';
-#outcache_path <- 'local/in/'
+inputdata <- 'NOT CURRENTLY USED BUT SHOULD BE SET TO SOME VALUE DOES NOT MATTER WHAT';
+#' The full path to wherever you are keeping your .dat file from ncdb
+inputdata_ncdb <- '/path/to/NCDBPUF_KidRnPel.0.2015.0.dat';
+#' The full path to wherever you are keeping your .do (Stata) file for importing
+#' the above `inputdata_ncdb` file
+dctfile_ncdb_raw <- '/path/to/NCDB_PUF_Labels_2015.do';
 #' 
 #' ## Password for creating dashboard
 .shinypw <- 'SHINYPASSWORD';
 #'
-#' ## For the crosscheck_old_new.R script...
-.inputenv_old <- 'local/THISREPO_YYMMDD.rdata';
+c()

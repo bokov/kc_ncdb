@@ -37,8 +37,8 @@ dat1 <- dat0;
 #                         ,searchrep=as.matrix(na.omit(dct0[,c('colname','varname')]))
 #                         ,method='startsends');
 #' Mass relabel/reorder factor variables.
-for(ii in unique(levels_map$varname)){
-  dat1[[ii]] <- factorclean(dat1[[ii]],spec_mapper = levels_map,var=ii
+for(.ii in unique(levels_map$varname)){
+  dat1[[.ii]] <- factorclean(dat1[[.ii]],spec_mapper = levels_map,var=.ii
                             ,droplevels = T)};
 #' 
 #' Simplified recurrence type: Not available in NCDB?

@@ -41,8 +41,9 @@ instrequire(
     #,'Matrix'
     
     # data manipulation & piping. 
-    # 'tools' is used by trailR.R. Not sure what uses 'stringr'.
-    ,'readr','dplyr','magrittr','tools'
+    # 'tools' is used by trailR.R
+    # 'LaF' is used for fast and powerful reading of text files.
+    ,'readr','dplyr','magrittr','tools','LaF'
     #,'lubridate'
     
     # plotting
@@ -50,7 +51,7 @@ instrequire(
     #,'ggplot2','grid','GGally','heatmap3','survminer','gridExtra','scales'
     
     # string manipulation
-    ,'stringi','stringr'
+    ,'stringi' #,'stringr'
     
     # table formatting
     ,'pander','tableone'

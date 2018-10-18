@@ -60,15 +60,21 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
 #' 
 #' Or if you obtained a different year or eligibility set of course.
 input_nrows <- 465126;
-tseed(project_seed);
-if(!exists('use_all_data'))
+sample_size <- round(input_nrows/100);
+fh <- with(dct0,tread(inputdata_ncdb,laf_open_fwf
+                      ,column_types = recode(type,str='string',int='integer'
+                                             ,long='double',float='double'
+                                             ,byte='integer')
+                      ,column_widths = 1+stop-start,column_names = colname));
+#' Create a variable named `use_all_data` in config.R or global.R and set it to
+#' any value. IF YOU'RE SURE YOU HAVE THE HARDWARE TO HANDLE IT **and** ARE 
+#' READY TO COMMIT TO FINAL ANALYSIS AS PER THE ABOVE COMMENT
+sample_rows <- if(!exists('use_all_data')) {
+  tseed(project_seed);sample(seq_len(input_nrows),sample_size)} else {
+    seq_len(nrow(fh))};
 
-system.time(dat0 <- with(dct0,tread(inputdata_ncdb,read_fwf
-                        ,col_positions = fwf_positions(start,stop,colname)
-                        #,n_max=47000
-                        ,col_types = do.call(cols,as.list(set_names(recode(
-                          type,str='c',byte='l',int='i',long='n',float='n'
-                          ),colname))))));
+dat0 <- LaF::read_lines(fh,rows=sample_rows);
+
 
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 

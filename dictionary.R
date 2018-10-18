@@ -17,49 +17,52 @@ formals(v)$dat <- as.name('dat1');
 #' Saving original file-list so we don't keep exporting functions and 
 #' environment variables to other scripts
 .origfiles <- ls();
-# read dat0 --------------------------------------------------------------------
-#' Initialize the column specification for parsing the input data
-dat0spec <- tread(inputdata,spec_csv,na=c('(null)',''),guess_max=5000);
-#' Force the `patient_num` column to be numeric rather than integer, to avoid
-#' missing values due to `patient_num` being too large
-dat0spec$cols[['patient_num']] <- col_number();
-#' Read the data 
-dat0 <- tread(inputdata,read_csv,na=c('(null)',''),col_type=dat0spec);
-colnames(dat0) <- tolower(colnames(dat0));
-
+#' 
 # make data dictionary ---------------------------------------------------------
 #' Create the data dictionary
-dct0 <- rebuild_dct(dat0,dctfile_raw,dctfile_tpl,tread_fun = read_csv,na=''
-                    ,searchrep=globalsearchrep);
-#' 
-# a few dat0 hacks -------------------------------------------------------------
-#' A workaround for the fact that in `dat1` columns get transformed and we need
-#' an original value from `dat0`, but in `dat0` the column names are not yet 
-#' renamed to stable values.
-cstatic_n_dob <- subset(dct0,varname=='n_dob')$colname;
-#' We use this value to create a list of `patient_num` s that have mismatched
-#' dates of birth between NAACCR and EMR
-kcpatients.bad_dob <- dat0[as.character(dat0$birth_date)!=
-                             as.character(dat0[[cstatic_n_dob]]) & 
-                             !is.na(dat0[[cstatic_n_dob]]),'patient_num'] %>% 
-  unlist %>% unname;
+.dctraw <- tread(dctfile_raw,readLines) %>%
+  # blow away the non UTF-8 characters
+  submulti(cbind(c('\x93|\x94','\x96'),c('"','-')));
 
-#' A similar pattern for finding NAACCR dates in dat0, before we start 
-#' transforming it in dat1.
-cstatic_n_tpoints <- subset(dct0,varname %in% c('n_ddiag','n_fc','n_dsurg'
-                                                ,'n_drecur','n_lc'))$colname;
-#' And then recording the `patient_num`s for patients with multiple NAACCR 
-#' rows (until I can ascertain that values from the same row in NAACCR are
-#' bound together in some way recoverable from i2b2 such as instance numbers).
-#' Until then, might have to drop such cases.
-kcpatients.naaccr_dupe <- group_by(dat0,patient_num)[
-  ,c('patient_num',cstatic_n_tpoints)] %>% 
-  summarize_all(function(xx) sum(!is.na(xx))) %>% 
-  apply(1,function(xx) c(xx[1],max(xx[-1]))) %>% t %>% data.frame %>% 
-  subset(V2>1) %>% `$`(patient_num);
+dct0 <- full_join(
+  # variable name mappings
+   .dctraw[grep('^label var',.dctraw)] %>% gsub('label var |\t','',.) %>% 
+     paste0(collapse='\n') %>% read_delim('"',trim_ws = T,col_names=F) %>% 
+     select(1:2) %>% set_colnames(c('colname','colname_long'))
+  # variable data types and offests for the FWF NCDB data
+  ,.dctraw[grep('^infix ',.dctraw):(grep('[ ]*using ',.dctraw)-1)] %>% 
+    gsub('(\\s|infix|-)+',' ',.) %>% paste0(collapse='\n') %>% 
+    read_delim(.,' ',trim_ws=T,col_names = F) %>% select(2:5) %>% 
+    set_colnames(c('type','colname','start','stop'))
+);
+
+if(nrow(dct0)!=length(grep('^label var',.dctraw))) {
+  stop('
+Data dictionary mismatch the "make data dictionary" section of dictionary.R')};
+#'
+# level names ------------------------------------------------------------------
+levels_map <- data.frame(lstart=grep('^label define',.dctraw)
+                         ,lstop=grep('^label values',.dctraw)) %>% 
+  cbind(.,name=gsub('label define ([A-Z0-9_]+).*','\\1'
+                    ,.dctraw[(.)$lstart]),stringsAsFactors=F) %>% 
+  apply(1,function(xx) {
+    .dctraw[as.numeric(xx[1])+seq_len(diff(as.numeric(xx[1:2]))-1)] %>% 
+      gsub('\t','',.) %>% c(NA,.) %>% paste0(collapse='\n') %>% 
+      read_delim(.,'"',col_names=F,skip = 1,trim_ws=T) %>% select(1:2) %>% 
+      cbind(var=xx[3])}) %>% 
+  do.call(rbind,.) %>% set_names(c('code','label','varname'));
+
+# read in data -----------------------------------------------------------------
+dat0 <- with(dct0,tread(inputdata_ncdb,read_fwf
+                        ,col_positions = fwf_positions(start,stop,colname)
+                        ,n_max=20
+                        ,col_types = do.call(cols,as.list(set_names(recode(
+                          type,str='c',byte='l',int='i',long='n',float='n'
+                          ),colname)))));
 
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 
 #' ...which includes the audit trail
 tsave(file=paste0(.currentscript,'.rdata'),list=setdiff(ls(),.origfiles));
+c()

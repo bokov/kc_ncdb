@@ -1,18 +1,14 @@
 #' ---
-#' title: "Kidney Cancer Data Exploration"
+#' title: "Kidney Cancer NCDB Data Exploration"
 #' subtitle: "KL2 Aim 2"
 #' author: 
 #' - "Alex F. Bokov^[UT Health San Antonio]"
 #' date: '`r format(Sys.Date(), "%B %d, %Y")`'
-#' tags: ["data characterization", "preliminary", "NAACCR", "urology", "cancer"]
+#' tags: ["data characterization", "preliminary", "NCDB", "urology", "cancer"]
 #' thanks: ["Dr. Shawn Murphy", "Dr. Ronald Rodriguez", "Dr. Amelie Ramirez", "Dr. Joel Michalek"]
 #' abstract: |
-#'   Minimal necessary NAACCR variables chosen and 
-#'   process documented for preparing them for analysis, as well as 
-#'   supplementing some of them with additional data from EMR if available.
-#'   Ready to proceed to chart review of existing data, acquisition of 
-#'   independent NAACCR data, development of additional variables, and working
-#'   on Aim 1.
+#'   Attempting to replicate proposed disparity analysis on large independent
+#'   data source. 
 #' link-citations: true
 #' css: production.css
 #' bibliography: kidneycancer.bib
@@ -39,7 +35,7 @@
 #+ init, echo=FALSE, include=FALSE, message=FALSE
 # init -------------------------------------------------------------------------
 # if running in test-mode, uncomment the line below
-#options(gitstamp_prod=F);
+options(gitstamp_prod=F);
 .junk<-capture.output(source('global.R',echo=F));
 
 default_font <- 'Times New Roman';
@@ -50,7 +46,7 @@ default_font <- 'Times New Roman';
 if(is.null(.currentscript)) .currentscript <- knitr::current_input();
 if(is.null(.currentscript)) .currentscript <- 'RUN_FROM_INTERACTIVE_SESSION';
 tself(scriptname=.currentscript);
-project_seed <- 20180803;
+project_seed <- 20181018;
 .loadedobjects <- c();
 for(ii in seq_along(.depends)) {
   if(!file.exists(.depdata[ii])) system(sprintf('R -e "source(\'%s\')"'

@@ -828,7 +828,7 @@ fs <- function(str,text=str,url=paste0('#',gsub('[^_a-z0-9]','-',tolower(str)))
     if(missing(class) && 
        length(dct_class<-na.omit(c(dctinfo[[col_class]],NA)))==1) {
       class <- dct_class;}
-  }
+  } else dctinfo <- data.frame(NA);
   out <- sprintf(rep(template,nrow(dctinfo)),text,url,class,tooltip,...);
   # register each unique str called by fs in a global option specified by 
   # fs_register

@@ -22,14 +22,11 @@
 #' output:
 #'  html_document:
 #'   keep_md: true
-#'   pandoc_args: ["--filter", "pandoc-crossref"]
 #'  word_document:
 #'   reference_docx: 'nt_styletemplate.docx'
 #'   keep_md: true
-#'   pandoc_args: ["--filter", "pandoc-crossref"]
 #'  pdf_document:
 #'   keep_md: true
-#'   pandoc_args: ["--filter", "pandoc-crossref"]
 #' ---
 #' 
 #+ init, echo=FALSE, include=FALSE, message=FALSE
@@ -55,6 +52,10 @@ for(ii in seq_along(.depends)) {
 knitr::opts_chunk$set(echo = F,warning = F,message=F,fig.scap=NA,fig.lp=''
                       ,dev.args=list(family=default_font));
 
+# NOTE!!! Will need to add pandoc_args: ["--filter", "pandoc-crossref"]
+# back into each of the output format sections in YAML header after plots start
+# existing again
+# 
 # if a text string named FOO is created prior to a named chunk also named FOO
 # then specifying opts.label='fig_opts' in the options for that chunk will use
 # that string as the caption
@@ -167,14 +168,14 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 #' scaffolding on which the rest of the analysis will be built.
 #' 
 #' **I found the following NAACCR elements sufficient for deriving all the above 
-#' analytic variables: `r fs('n_hisp')`, 
-#' `r fs(v(c_main_naaccr_vars),retfun=knitr::combine_words)`.** More details 
+#' analytic variables: `fs('n_hisp')`, 
+#' `fs(v(c_main_naaccr_vars),retfun=knitr::combine_words)`.** More details 
 #' about how these were selected can be found in [-@sec:vartrn]. In addition the 
 #' following will almost certainly be needed for covariates or mediators: 
-#' `r knitr::combine_words(fs(c('n_sex','n_dob','n_marital','n_brthplc')),and='')`,
+#' `knitr::combine_words(fs(c('n_sex','n_dob','n_marital','n_brthplc')),and='')`,
 #' and any field whose name contains `Race`, `Comorbid/Complication`, 
 #' `AJCC`, or `TNM`. For crosschecking it will also be useful to have 
-#' `r fs('n_mets')`, `r fs('n_fc')`, and `r fs('n_mult')`. Additional items 
+#' `fs('n_mets')`, `fs('n_fc')`, and `fs('n_mult')`. Additional items 
 #' are likely to be needed as this project evolves, but **the elements listed so
 #' far should be sufficient to replicate my analysis on de-identified State or
 #' National NAACCR data**. In NCDB they correspond to the following: [to be 
@@ -204,6 +205,7 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 # ,' for ',.survfit_plot0$fit$n[1],' Hispanic and ',.survfit_plot0$fit$n[2]
 # ,' non-Hispanic white patients with a 3-year follow-up period (any surgeries 
 # occurring more than 3 years post-diagnosis are treated as censored)');
+cat('FOO\n\nplaceholder');
 #' :::::
 #' 
 #' ###### blank
@@ -224,6 +226,7 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 # Like [@fig:recur_survfit] except now the outcome is ',fs('n_vtstat')
 # ,' for ',.survfit_plot2$fit$n[1],' Hispanic  and ',.survfit_plot2$fit$n[2]
 # ,' non-Hispanic white patients. Six-year follow-up');
+cat('FOO\n\nplaceholder');
 #' :::::
 #' 
 #' ::::: {#fig:alldeath_survfit custom-style="Image Caption"}
@@ -402,19 +405,15 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 #     sum(dd$Freq)*100}) %>% sprintf('%3.1f%%',.);
 #' In [@tbl:stagegrp; @tbl:staget; @tbl:stagen; @tbl:stagem], when both the 
 #' AJCC-7 and AJCC-6 values are non-missing they agree with each other 
-#' `r knitr::combine_words(.tnmagree)` of the time for T, N, and M respectively.
-#' There are `r knitr::combine_words(.tnmnoa7)` AJCC-7 values missing but
-#' `r knitr::combine_words(.tnmrescueable)` can be filled in from AJCC-6 for overall stage, T, 
+#' `knitr::combine_words(.tnmagree)` of the time for T, N, and M respectively.
+#' There are `knitr::combine_words(.tnmnoa7)` AJCC-7 values missing but
+#' `knitr::combine_words(.tnmrescueable)` can be filled in from AJCC-6 for overall stage, T, 
 #' N, and M respectively.
 #' 
 # A4 variables -----------------------------------------------------------------
 #'
 #' # Variable descriptions {#sec:vars label="Appendix 4"}
 #' 
-if(!'e_surgonc' %in% (debug00 <- getOption('fs_reg'))){
-  message('e_surgonc not found before tooltips');
-  save(debug00,file='debug00.rdata');
-}
 #' 
 #+ progfootnotes, results='asis'
 fs(getOption('fs_reg'),url=paste0('#',getOption('fs_reg'))
@@ -435,22 +434,21 @@ fs(getOption('fs_reg'),url=paste0('#',getOption('fs_reg'))
 # # This part constructs the body of the variable definition, can't be done in
 # # fs() yet because 'blah blah' has to be pasted together from the non-NA 
 # # values of several columns.
-# cat('blah blah','\n\n',if(is.na(3)) '' else c(' ~ Link: ','THEURL','\n\n'),':::::\n\n')}
-cat('***\n');
-.junk <- dct0[match(getOption('fs_reg')
-                    ,do.call(coalesce,dct0[,c('varname','colname')]))
-              ,c('varname','colname_long','chartname'
-                 ,'comment','col_url','colname')] %>%
-  # subset(dct0,varname %in% getOption('fs_reg')
-  #               ,select = c('varname','colname_long','chartname','comment'
-  #                           ,'col_url')) %>% 
-  apply(1,function(xx) {
-    # TODO: the hardcoded offsets make this brittle. Fina better way.
-    cat('######',na.omit(xx[c(1,6)])[1],'\n\n',na.omit(xx[2:1])[1],':\n\n  ~ '
-        ,ifelse(length(na.omit(xx[2:4]))>0
-                ,iconv(paste(na.omit(xx[2:4]),collapse='; '),to='UTF-8',sub='')
-                ,'')
-        ,ifelse(is.na(xx[5]),'',paste('\n\n  ~ Link:',xx[5])),'\n\n***\n')});
+# # Below needs to be uncommented when ready to do the new links
+# .junk <- dct0[match(getOption('fs_reg')
+#                     ,do.call(coalesce,dct0[,c('varname','colname')]))
+#               ,c('varname','colname_long','chartname'
+#                  ,'comment','col_url','colname')] %>%
+#   # subset(dct0,varname %in% getOption('fs_reg')
+#   #               ,select = c('varname','colname_long','chartname','comment'
+#   #                           ,'col_url')) %>% 
+#   apply(1,function(xx) {
+#     # TODO: the hardcoded offsets make this brittle. Fina better way.
+#     cat('######',na.omit(xx[c(1,6)])[1],'\n\n',na.omit(xx[2:1])[1],':\n\n  ~ '
+#         ,ifelse(length(na.omit(xx[2:4]))>0
+#                 ,iconv(paste(na.omit(xx[2:4]),collapse='; '),to='UTF-8',sub='')
+#                 ,'')
+#         ,ifelse(is.na(xx[5]),'',paste('\n\n  ~ Link:',xx[5])),'\n\n***\n')});
 #' 
 #' `r md$pbreak`
 #' 

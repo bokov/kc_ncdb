@@ -203,7 +203,8 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
                            SPANISH_HISPANIC_ORIGIN
                            ,`0: Non-Spanish; non-Hispanic`='non-Hispanic'
                            ,`9: Unknown`='Unknown',.default='Hispanic')
-                         ,c=PUF_VITAL_STATUS=='1: Alive',strt=0) %>% 
+                         ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(PUF_VITAL_STATUS=='1: Alive',1,0)
+                         ,strt=0) %>% 
   as_tibble %>% survfit_wrapper(eventvars='DX_LASTCONTACT_DEATH_MONTHS'
                                 ,censrvars='c',startvars='strt'
                                 ,predvars='Ethnicity',subs=AGE>=55,fsargs=NA);

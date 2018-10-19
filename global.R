@@ -13,7 +13,10 @@
 #' ## Local functions
 #+ warning=FALSE, message=FALSE
 source('./functions.R');
-source('./trailR.R');
+# Now that we are managing trailR as a standalone package, need devtools
+if(!'devtools' %in% names(installed.packages()[,1])) instrequire('devtools');
+devtools::install_github('bokov/trailR',ref='integration'); library(trailR);
+#source('./trailR.R');
 
 # libs -------------------------------------------------------------------------
 #' Libraries

@@ -105,7 +105,7 @@ urls <- list(
   # NAACCR data dictionary, section 10
   ,dict_naaccr='http://datadictionary.naaccr.org/?c=10'
   # base URL for git tickets
-  ,git_tix='https://github.com/bokov/kl2_kc_analysis/issues/'
+  ,git_tix='https://github.com/bokov/kc_ncdb/issues/'
   );
 #' RPubs keeps the actual content in an iframe, and this cool little 3-liner 
 #' gets the address of that iframe's target so in principle I can now construct

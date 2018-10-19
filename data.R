@@ -14,7 +14,6 @@ source('global.R');
 .currentscript <- parent.frame(2)$ofile;
 if(is.null(.currentscript)) .currentscript <- 'RUN_FROM_INTERACTIVE_SESSION';
 tself(scriptname=.currentscript);
-project_seed <- 20180803;
 if(!file.exists(.depdata)) system(sprintf('R -e "source(\'%s\')"',.depends));
 .loadedobjects <- tload(.depdata);
 #knitr::opts_chunk$set(echo = F,warning = F,message=F);

@@ -10,7 +10,6 @@ source('global.R');
 .currentscript <- parent.frame(2)$ofile;
 if(is.null(.currentscript)) .currentscript <- 'RUN_FROM_INTERACTIVE_SESSION';
 tself(scriptname=.currentscript);
-project_seed <- 20181018;
 debug <- 1;
 #' Default args
 formals(v)$dat <- as.name('dat1');

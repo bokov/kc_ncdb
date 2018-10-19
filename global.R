@@ -89,6 +89,8 @@ dctfile <- paste0('dct_',basename(inputdata));
 #' This is the file that lists levels of discrete variables and what each listed
 #' level should be renamed to.
 levels_map_file <- 'levels_map.csv';
+#' random seed
+project_seed <- 20181018;
 # searchrep --------------------------------------------------------------------
 globalsearchrep <- rbind(
   c('\\[[0-9,]+ facts; [0-9,]+ patients\\]','')

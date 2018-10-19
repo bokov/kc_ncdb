@@ -46,7 +46,6 @@ default_font <- 'Times New Roman';
 if(is.null(.currentscript)) .currentscript <- knitr::current_input();
 if(is.null(.currentscript)) .currentscript <- 'RUN_FROM_INTERACTIVE_SESSION';
 tself(scriptname=.currentscript);
-project_seed <- 20181018;
 .loadedobjects <- c();
 for(ii in seq_along(.depends)) {
   if(!file.exists(.depdata[ii])) system(sprintf('R -e "source(\'%s\')"'
@@ -59,9 +58,9 @@ knitr::opts_chunk$set(echo = F,warning = F,message=F,fig.scap=NA,fig.lp=''
 # if a text string named FOO is created prior to a named chunk also named FOO
 # then specifying opts.label='fig_opts' in the options for that chunk will use
 # that string as the caption
-knitr::opts_template$set(
-  fig_opts=alist(fig.cap=get0(knitr::opts_current$get("label"))
-                 ,results='asis'));
+# knitr::opts_template$set(
+#   fig_opts=alist(fig.cap=get0(knitr::opts_current$get("label"))
+#                  ,results='asis'));
 
 # Set default arguments for some functions
 panderOptions('table.split.table',Inf);
@@ -71,7 +70,7 @@ panderOptions('table.alignment.rownames','left');
 .args_default_v <- formals(v);
 
 # default arguments for getting lists of column names
-formals(v)[c('dat','retcol')]<-alist(dat1,c('colname','varname'));
+#formals(v)[c('dat','retcol')]<-alist(dat1,c('colname','varname'));
 
 # defaults for 'fancy span' string transformation of variable names 
 .args_default_fs <- formals(fs);
@@ -84,14 +83,6 @@ formals(n2s)$template <- fstmplts$n2s;
 formals(fs)[c('url','fs_reg','retfun')] <- alist(str,'fs_reg',return);
 formals(fs)$template <- fstmplts$link_colnamelong;
 
-# We don't yet explicitly reference patient_num outside the news block, so I'm 
-# priming the fs_reg option with it here manually
-options(fs_reg='patient_num');
-
-# defaults for graphical parameters as used by the eventplot() function
-.par_eventplot <- .par_default <- par(no.readonly = T);
-.par_eventplot$family = 'Times New Roman';
-
 # markdown snippets of boilerplate
 md <- list(
   pbreak=cm('\n\n\n::::: {.pbreak custom-style="pbreak"}\n&nbsp;\n:::::\n\n\n','
@@ -103,13 +94,6 @@ page break and/or hide this code
   ,mainvars = v(c_main_naaccr_vars) %>% sapply(fs) %>% 
     (knitr::combine_words)
   );
-
-# Place to create tables that will get used throughout script
-dat2tte <- transmute_all(dat2a[,v(c_istte)],function(xx){
-  ifelse(xx>dat2a$age_at_visit_days,NA,xx)});
-dat2tte$patient_num <- dat2a$patient_num;
-dat2tte$`Earliest Death` <- do.call(pmin,c(dat2tte[,v(c_death)],na.rm=T));
-dat2tte$`Latest Death` <- do.call(pmax,c(dat2tte[,v(c_death)],na.rm=T));
 
 # note_toc ---------------------------------------------------------------------
 #' ###### TOC {-}

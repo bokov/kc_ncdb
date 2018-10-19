@@ -197,15 +197,23 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 # prepare if needed
 #' ###### blank
 #' ::::: {#fig:surg_survfit custom-style="Image Caption"}
-#+ surv_surg,results='asis',fig.dim=c(3.1,3),fig.align='center'
-# .survfit_plot0$plot;
-# cat('
-# 
-# Number of weeks elapsed from ',fs('a_tdiag'),' (time 0) to ',fs('a_tsurg')
-# ,' for ',.survfit_plot0$fit$n[1],' Hispanic and ',.survfit_plot0$fit$n[2]
-# ,' non-Hispanic white patients with a 3-year follow-up period (any surgeries 
-# occurring more than 3 years post-diagnosis are treated as censored)');
-cat('FOO\n\nplaceholder');
+#+ surv_surg,results='asis',fig.align='center'
+.survfit_plot0 <- mutate(dat1
+                         ,Ethnicity=recode(
+                           SPANISH_HISPANIC_ORIGIN
+                           ,`0: Non-Spanish; non-Hispanic`='non-Hispanic'
+                           ,`9: Unknown`='Unknown',.default='Hispanic')
+                         ,c=PUF_VITAL_STATUS=='1: Alive',strt=0) %>% 
+  as_tibble %>% survfit_wrapper(eventvars='DX_LASTCONTACT_DEATH_MONTHS'
+                                ,censrvars='c',startvars='strt'
+                                ,predvars='Ethnicity',subs=AGE>=55,fsargs=NA);
+.survfit_plot0$plot;
+cat('
+
+Number of weeks elapsed from ',fs('a_tdiag'),' (time 0) to ',fs('a_tsurg')
+,' for ',.survfit_plot0$fit$n[1],' Hispanic and ',.survfit_plot0$fit$n[2]
+,' non-Hispanic white patients with a 3-year follow-up period (any surgeries
+occurring more than 3 years post-diagnosis are treated as censored)');
 #' :::::
 #' 
 #' ###### blank

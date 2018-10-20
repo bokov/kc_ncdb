@@ -71,7 +71,7 @@ panderOptions('table.alignment.rownames','left');
 .args_default_v <- formals(v);
 
 # default arguments for getting lists of column names
-#formals(v)[c('dat','retcol')]<-alist(dat1,c('colname','varname'));
+formals(v)[c('dat','retcol')] <- c(as.name('dat1'),'colname');
 
 # defaults for 'fancy span' string transformation of variable names 
 .args_default_fs <- formals(fs);
@@ -203,11 +203,23 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
                            SPANISH_HISPANIC_ORIGIN
                            ,`0: Non-Spanish; non-Hispanic`='non-Hispanic'
                            ,`9: Unknown`='Unknown',.default='Hispanic')
-                         ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(PUF_VITAL_STATUS=='1: Alive',1,0)
+                         ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(
+                           PUF_VITAL_STATUS=='1: Alive',1,0)
                          ,strt=0) %>% 
-  as_tibble %>% survfit_wrapper(eventvars='DX_LASTCONTACT_DEATH_MONTHS'
-                                ,censrvars='c',startvars='strt'
-                                ,predvars='Ethnicity',subs=AGE>=55,fsargs=NA);
+  as_tibble %>% survfit_wrapper(
+    eventvars='DX_LASTCONTACT_DEATH_MONTHS',censrvars='c',startvars='strt'
+    ,predvars='Ethnicity'
+    # restrict them to non renal pelvis
+    ,subs=PRIMARY_SITE=='C649'&
+      # analyze stage IV separately
+      ANALYTIC_STAGE_GROUP!='4: Stage IV'&
+      # only do the surgical cases
+      REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+      # only do the surgical cases
+      RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
+      # only the patients who are presenting with their first ever tumor
+      SEQUENCE_NUMBER=='00'
+    ,fsargs=NA);
 .survfit_plot0$plot;
 cat('
 

@@ -126,4 +126,7 @@
 "RX_HOSP_DXSTG_PROC","Diagnostic and Staging Procedure at this Facility","byte",396,397,0,,,,
 "PALLIATIVE_CARE_HOSP","Palliative Care at this Facility","byte",398,398,0,,,,
 "a_hsp",,,,,,"Condensed version of SPANISH_HISPANIC_ORIGIN NCDB variable","TRUE",,
-"a_path_t",,,,,,"Condensed version of TNM_PATH_T, with the sub-stages A/B removed and Ts inserted","TRUE",,
+"a_path_t",,,,,,"Condensed version of TNM_PATH_T, with the sub-stages A/B/C removed and Ts inserted","TRUE",,
+"a_race",,,,,,"Condensed version of the RACE variable, with sparsely populated groups binned in Other.","TRUE",,
+"a_eth",,,,,,"Merging of a_hsp and a_race","TRUE",,
+"a_clin_t",,,,,,"Condensed version of TNM_CLIN_T, with the sub-stages A/B/C removed and Ts inserted","TRUE",,

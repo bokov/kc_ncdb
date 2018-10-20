@@ -18,7 +18,7 @@ if(!file.exists(.depdata)) system(sprintf('R -e "source(\'%s\')"',.depends));
 .loadedobjects <- tload(.depdata);
 #knitr::opts_chunk$set(echo = F,warning = F,message=F);
 #' Default args
-formals(v)$dat <- as.name('dat1');
+formals(v)[c('dat','retcol')] <- c(as.name('dat1'),'colname');
 #' Saving original file-list so we don't keep exporting functions and 
 #' environment variables to other scripts
 .origfiles <- ls();
@@ -47,7 +47,27 @@ for(.ii in unique(levels_map$varname)){
 #' Find the patients which had active kidney cancer (rather than starting with 
 #' pre-existing): data not available in NCDB as far as I can tell
 #' 
-#' hispanic strict and lenient: unified variable already baked into NCDB
+#' Simplify Hispanic variable
+dat1$a_hsp <- do.call(
+  recode
+  ,c(list(
+    # first argument, the original variable
+    dat1$SPANISH_HISPANIC_ORIGIN)
+    # named list for the '...' arguments of recode()
+    ,setNames(list('non-Hispanic','Unknown'
+                   # with the last one corresponding to the
+                   # .default argument of recode()
+                   ,'Hispanic')
+              # we get the names for the named list from the corresponding 
+              # values in the levels_map section for this variable
+              ,c(subset(levels_map
+                        ,varname=='SPANISH_HISPANIC_ORIGIN'&code %in% 
+                          c(0,9))$label
+                 # and the .default is added statically because every code that
+                 # isn't 0 or 9 is some sub-category of Hispanic
+                 ,'.default'))));
+#' Simplify the TNM_PATH_T variable
+dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 #' 
 #' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
 #'   mutate( NAACCR=patient_num %in% kcpatients.naaccr

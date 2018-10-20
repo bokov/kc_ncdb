@@ -78,6 +78,27 @@ dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 #' consort_table <- summarise(cohorts,NAACCR=any(NAACCR),EMR=any(EMR)
 #'                            ,PreExisting=any(PreExisting)
 #'                            ,N=length(patient_num))[,-1];
+# cox ph ----------
+#' Bulk univariate analysis
+.cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
+               ,data=dat1
+               # no renal pelvis
+               ,subset=PRIMARY_SITE=='C649'&
+                 # analyze stage IV separately
+                 ANALYTIC_STAGE_GROUP!='4: Stage IV'&
+                 # only do the surgical cases
+                 REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+                 # only do the surgical cases
+                 RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
+                 # only the patients who are presenting with their first ever tumor
+                 SEQUENCE_NUMBER=='00');
+
+cph_uni <- setdiff(names(dat1),v(c_nonanalytic)) %>% 
+  sapply(function(xx) try(update(.cph0,paste0('.~',xx))),simplify=F);
+cph_uni_tab <- cph_uni[!sapply(bar,is,'try-error')] %>% 
+  sapply(glance,simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 
+  cbind(var=rownames(.),.) %>% arrange(desc(concordance)) %>% 
+  mutate(p.sc.adj=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

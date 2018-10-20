@@ -95,7 +95,7 @@ dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 
 cph_uni <- setdiff(names(dat1),v(c_nonanalytic)) %>% 
   sapply(function(xx) try(update(.cph0,paste0('.~',xx))),simplify=F);
-cph_uni_tab <- cph_uni[!sapply(bar,is,'try-error')] %>% 
+cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
   sapply(glance,simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 
   cbind(var=rownames(.),.) %>% arrange(desc(concordance)) %>% 
   mutate(p.sc.adj=p.adjust(p.value.sc));

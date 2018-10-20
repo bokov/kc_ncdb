@@ -57,8 +57,8 @@ instrequire(
     ,'stringi' #,'stringr'
     
     # table formatting
-    ,'pander','tableone'
-    #,'knitr','htmltab','stargazer','broom','janitor'
+    ,'pander','tableone','broom'
+    #,'knitr','htmltab','stargazer','janitor'
     
     # Web
     ,'RCurl','XML'

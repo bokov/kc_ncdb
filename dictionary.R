@@ -73,11 +73,14 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
 #' Or if you obtained a different year or eligibility set of course.
 input_nrows <- 465126;
 sample_size <- round(input_nrows/50);
-fh <- with(dct0,tread(inputdata_ncdb,laf_open_fwf
-                      ,column_types = recode(type,str='string',int='integer'
-                                             ,long='double',float='double'
-                                             ,byte='integer')
-                      ,column_widths = 1+stop-start,column_names = colname));
+# the !is.na(type) is to exclude the programatically created variables that 
+# might be anticipated in .dctold that got read in earlier
+fh <- subset(dct0,!is.na(type)) %>% 
+  with(dct0,tread(inputdata_ncdb,laf_open_fwf
+                  ,column_types = recode(type,str='string',int='integer'
+                                         ,long='double',float='double'
+                                         ,byte='integer')
+                  ,column_widths = 1+stop-start,column_names = colname));
 #' Create a variable named `use_all_data` in config.R or global.R and set it to
 #' any value. IF YOU'RE SURE YOU HAVE THE HARDWARE TO HANDLE IT **and** ARE 
 #' READY TO COMMIT TO FINAL ANALYSIS AS PER THE ABOVE COMMENT

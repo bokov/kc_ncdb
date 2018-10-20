@@ -76,7 +76,7 @@ sample_size <- round(input_nrows/50);
 # the !is.na(type) is to exclude the programatically created variables that 
 # might be anticipated in .dctold that got read in earlier
 fh <- subset(dct0,!is.na(type)) %>% 
-  with(dct0,tread(inputdata_ncdb,laf_open_fwf
+  with(tread(inputdata_ncdb,laf_open_fwf
                   ,column_types = recode(type,str='string',int='integer'
                                          ,long='double',float='double'
                                          ,byte='integer')

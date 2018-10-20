@@ -1090,7 +1090,7 @@ survfit_wrapper <- function(dat,eventvars,censrvars,startvars,predvars='1'
                             ,formula=NA
                             ,default.censrvars=c('age_at_visit_days')
                             ,subs=patient_num %in% kcpatients.naaccr 
-                            ,thrunique=5,thrsmsize=20,drop_pred=NA
+                            ,thrunique=5,thrsmsize=10,drop_pred=NA
                             ,eventfun=pmin,censrfun=pmin,startfun=pmin
                             # function that takes the (internally created) 
                             # 'event' and 'censr' variables and returns a T/F 
@@ -1151,12 +1151,13 @@ survfit_wrapper <- function(dat,eventvars,censrvars,startvars,predvars='1'
   for(ii in predvars) {
     if(!is.na(numeric_pred_breaks) && numeric_pred_breaks>0 && 
               is.numeric(dat[[ii]])){
-      dat[[ii]] <- cut(dat[[ii]]
+      .iinum <- try(cut(dat[[ii]]
                        ,quantile(dat[[ii]]
                                  ,c(0,seq_len(numeric_pred_breaks))/
                                    numeric_pred_breaks,na.rm=T)
-                       ,include.lowest = T)}
-    iitab <- table(dat[[ii]]);
+                       ,include.lowest = T));
+      dat[[ii]] <- if(is(.iinum,'try-error')) factor(dat[[ii]]) else .iinum};
+    iitab <- table(subset(dat,cc)[[ii]]);
     dat[[ii]][dat[[ii]] %in% c(names(iitab)[iitab<thrsmsize],drop_pred)] <- NA;
   }
   # TODO: sanity-check predvars to make sure they exist 

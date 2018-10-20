@@ -199,16 +199,11 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 #' ::::: {#fig:surg_survfit custom-style="Image Caption"}
 #+ surv_surg,results='asis',fig.align='center'
 .survfit_plot0 <- mutate(dat1
-                         ,Ethnicity=recode(
-                           SPANISH_HISPANIC_ORIGIN
-                           ,`0: Non-Spanish; non-Hispanic`='non-Hispanic'
-                           ,`9: Unknown`='Unknown',.default='Hispanic')
                          ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(
                            PUF_VITAL_STATUS=='1: Alive',1,0)
                          ,strt=0) %>% 
   as_tibble %>% survfit_wrapper(
     eventvars='DX_LASTCONTACT_DEATH_MONTHS',censrvars='c',startvars='strt'
-    ,predvars='Ethnicity'
     # restrict them to non renal pelvis
     ,subs=PRIMARY_SITE=='C649'&
       # analyze stage IV separately
@@ -219,7 +214,7 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
       RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
       # only the patients who are presenting with their first ever tumor
       SEQUENCE_NUMBER=='00'
-    ,fsargs=NA);
+    ,fsargs=NA,predvars='a_hsp');
 .survfit_plot0$plot;
 cat('
 

@@ -16,10 +16,10 @@
 "UR_CD_13","Urban/Rural 2013","byte",64,64,151,,"TRUE",,
 "CROWFLY","Great Circle Distance","float",65,72,57,"Not sure what this actually is yet, but the middle tertile (6.9-20.7) has better prognosis than the others.","TRUE",,
 "CDCC_TOTAL","Charlson-Deyo Score","byte",73,74,0,,"TRUE",,
-"SEQUENCE_NUMBER","Sequence Number","str",75,76,0,"If 00, first-time cancer patient. Strange observation: the 01s seem to have better survival than 00s.",,"TRUE",
+"SEQUENCE_NUMBER","Sequence Number","str",75,76,0,"If 00, first-time cancer patient. Strange observation: the 01s seem to have better survival than 00s.",,"TRUE","TRUE"
 "CLASS_OF_CASE","Class of Case","byte",77,78,0,,"TRUE",,
 "YEAR_OF_DIAGNOSIS","Year of Diagnosis","int",79,82,0,,"TRUE","TRUE",
-"PRIMARY_SITE","Primary Site","str",83,86,0,"C649 is kidney, C659 is renal pelvis. The latters seems to have worse prognosis.",,"TRUE",
+"PRIMARY_SITE","Primary Site","str",83,86,0,"C649 is kidney, C659 is renal pelvis. The latters seems to have worse prognosis.",,"TRUE","TRUE"
 "LATERALITY","Laterality","byte",87,87,0,"Which kidney. Left seems to have worse prognosis.","TRUE","TRUE",
 "HISTOLOGY","Histology","int",88,91,0,"Don't know how this is coded.",,,
 "BEHAVIOR","Behavior","byte",92,92,0,,,"TRUE",
@@ -85,7 +85,7 @@
 "RX_SUMM_SURG_OTH_REGDIS","Surgery Other Site at any CoC Facility","byte",275,275,0,,,,
 "SURG_DISCHARGE_DAYS","Surgical Inpatient Stay, Days from Surgery","long",276,283,1042,,,,
 "READM_HOSP_30_DAYS","Readmission Within 30 Days of Surgical Discharge","byte",284,284,0,,,,
-"REASON_FOR_NO_SURGERY","Reason For No Surgery","byte",285,285,0,,,,
+"REASON_FOR_NO_SURGERY","Reason For No Surgery","byte",285,285,0,,,,"TRUE"
 "DX_RAD_STARTED_DAYS","Radiation, Days for Dx","long",286,293,4460,,,,
 "RX_SUMM_RADIATION","Radiation Therapy at any CoC Facility","byte",294,294,0,,,,
 "RAD_LOCATION_OF_RX","Location of Radiation Therapy","byte",295,295,0,,,,

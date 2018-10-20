@@ -38,10 +38,18 @@ dct0 <- full_join(
     read_delim(.,' ',trim_ws=T,col_names = F) %>% select(2:5) %>% 
     set_colnames(c('type','colname','start','stop'))
 );
+#' Merge on the manually edited columns from the static data dictionary if it
+#' exists
+if(file.exists(dctfile_tpl)){
+  .dctold <- tread(dctfile_tpl,read_csv,na='');
+  dct0 <- full_join(dct0,.dctold[,c('colname'
+                                ,setdiff(colnames(.dctold),colnames(dct0)))]);
+}
 
-if(nrow(dct0)!=length(grep('^label var',.dctraw))) {
-  stop('
-Data dictionary mismatch the "make data dictionary" section of dictionary.R')};
+#if(nrow(dct0)!=length(grep('^label var',.dctraw))) {
+#  stop('
+#Data dictionary mismatch the "make data dictionary" section of dictionary.R')};
+
 #'
 # level names ------------------------------------------------------------------
 levels_map <- data.frame(lstart=grep('^label define',.dctraw)
@@ -64,7 +72,7 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
 #' 
 #' Or if you obtained a different year or eligibility set of course.
 input_nrows <- 465126;
-sample_size <- round(input_nrows/100);
+sample_size <- round(input_nrows/50);
 fh <- with(dct0,tread(inputdata_ncdb,laf_open_fwf
                       ,column_types = recode(type,str='string',int='integer'
                                              ,long='double',float='double'
@@ -79,6 +87,10 @@ sample_rows <- if(!exists('use_all_data')) {
 
 dat0 <- LaF::read_lines(fh,rows=sample_rows);
 
+# empirical data characterization ---------
+dct0[na.omit(match(dct0$colname,names(dat0)))
+     ,'n_missing'] <- sapply(dat0,function(xx) sum(xx %in% c(NA,'')));
+#dct0$class <- sapply(dat0,function(xx) paste0(class(xx),collapse=';'));
 
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 

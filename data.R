@@ -49,30 +49,20 @@ for(.ii in unique(levels_map$varname)){
 #' 
 for(ii in unique(subset(levels_map,!is.na(relabel))$varname)){
   .ilevs <- subset(levels_map,varname==ii);
-  .irename <- levels_map[,c('varname','var_rename')] %>% 
-    mutate(varname=paste0('a_',tolower(varname))) %>% coalesce %>% unique;
+  .irename <- .ilevs[,c('var_rename','varname')] %>% 
+    mutate(varname=paste0('a_',tolower(varname))) %>% 
+    #(function(xx){browser();xx}) %>% 
+    do.call(coalesce,.) %>% unique;
   dat1[[.irename[1]]] <- with(.ilevs,set_names(relabel,label)) %>%
     as.list %>% c(list(dat1[[ii]]),.) %>% do.call(recode,.)};
-#' Simplify Hispanic variable
-# dat1$a_hsp <- do.call(
-#   recode
-#   ,c(list(
-#     # first argument, the original variable
-#     dat1$SPANISH_HISPANIC_ORIGIN)
-#     # named list for the '...' arguments of recode()
-#     ,setNames(list('non-Hispanic','Unknown'
-#                    # with the last one corresponding to the
-#                    # .default argument of recode()
-#                    ,'Hispanic')
-#               # we get the names for the named list from the corresponding 
-#               # values in the levels_map section for this variable
-#               ,c(subset(levels_map
-#                         ,varname=='SPANISH_HISPANIC_ORIGIN'&code %in% 
-#                           c(0,9))$label
-#                  # and the .default is added statically because every code that
-#                  # isn't 0 or 9 is some sub-category of Hispanic
-#                  ,'.default'))));
-# 
+#' Simplified ethnicity variable
+dat1$a_eth <- with(dat1
+                   ,case_when(a_hsp != 'non-Hispanic' ~ 
+                                as.character(a_hsp)
+                              ,a_race %in% c('Black','White') ~ 
+                                paste0('non-Hisp ',a_race)
+                              ,TRUE ~ 
+                                as.character(a_race)));
 #' Simplify the TNM_PATH_T variable
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 #' 

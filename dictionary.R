@@ -60,9 +60,17 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
     .dctraw[as.numeric(xx[1])+seq_len(diff(as.numeric(xx[1:2]))-1)] %>% 
       gsub('\t','',.) %>% c(NA,.) %>% paste0(collapse='\n') %>% 
       read_delim(.,'"',col_names=F,skip = 1,trim_ws=T) %>% select(1:2) %>% 
-      cbind(var=xx[3])}) %>% 
+      cbind(var=xx[3],stringsAsFactors=F)}) %>% 
   do.call(rbind,.) %>% set_names(c('code','label','varname')) %>% 
   subset(!varname %in% .levels_map_ignore);
+#' 
+#' This allows persistent tweaks to level names
+if(file.exists(levels_map_file)){
+  levels_map <- left_join(levels_map
+                          ,tread('levels_map.csv',read_csv) %>% 
+                            subset(!is.na(relabel)) %>% select(-label) %>% 
+                            mutate(code=as.character(code)));
+}
 
 # read in data -----------------------------------------------------------------
 #' hardcoding the number of rows so that the same random sample gets chosen each

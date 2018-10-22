@@ -114,8 +114,8 @@ cph_uni <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>%
 cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
   sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
-  mutate(var=gsub('`|:::.*$','',term),level=gsub('^.*:::|`','',term)
-         ,p.adj.sc=p.adjust(p.value.sc));
+  mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
+         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

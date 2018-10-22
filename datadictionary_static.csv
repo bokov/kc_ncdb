@@ -89,7 +89,7 @@
 "DX_RAD_STARTED_DAYS","Radiation, Days for Dx","long",286,293,0,0,,,,,,
 "RX_SUMM_RADIATION","Radiation Therapy at any CoC Facility","byte",294,294,0,0,,,,,,
 "RAD_LOCATION_OF_RX","Location of Radiation Therapy","byte",295,295,0,0,,,,,,
-"RAD_TREAT_VOL","Radiation Treatment Volume","byte",296,297,0,0,,,,,"TRUE",
+"RAD_TREAT_VOL","Radiation Treatment Volume","byte",296,297,0,0,,,,,,
 "RAD_REGIONAL_RX_MODALITY","Regional Treatment Modality","byte",298,299,0,0,,,,,,
 "RAD_REGIONAL_DOSE_CGY","Regional Dose","long",300,304,0,0,,,,,"TRUE",
 "RAD_BOOST_RX_MODALITY","Boost Treatment Modality","byte",305,306,0,0,,,,,,

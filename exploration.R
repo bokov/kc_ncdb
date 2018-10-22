@@ -259,10 +259,18 @@ cat('FOO\n\nplaceholder');
 #' preparation processes evolve.
 #' 
 #+ TableOne, cache=FALSE
-subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>% 
+subset(dat1,PUF_CASE_ID %in% sbs0$eligib0 & 
+         a_eth %in% c('Hispanic','non-Hisp White')) %>% 
   CreateTableOne(setdiff(subset(dct0,type %in% c('int','long'))$colname
                          ,c(v(c_nonanalytic),v(c_discrete)))
-                 ,strata = 'a_hsp',data=.) %>% print(printToggle=F) %>% pander;
+                 ,strata = 'a_eth',data=.) %>% print(printToggle=F) %>% 
+  pander(.,col.names=gsub('test','',colnames(.)));
+#+ TableOneCat
+subset(dat1,PUF_CASE_ID %in% sbs0$eligib0 &
+         a_eth %in% c('Hispanic','non-Hisp White')) %>% 
+  CreateTableOne(setdiff(v(c_discrete),c(v(c_nonanalytic),'a_eth'))
+                 ,strata = 'a_eth',data=.) %>% print(printToggle=F) %>% 
+  pander(.,col.names=gsub('test','',colnames(.)));
 # .tc <- paste0('
 # Summary of all the variables in the combined i2b2/NAACCR set broken up by '
 # ,fs('a_n_recur'),'. `Disease-free` and `Never disease-free` have the same 

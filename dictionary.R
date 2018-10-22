@@ -16,10 +16,6 @@ formals(v)$dat <- as.name('dat1');
 #' Saving original file-list so we don't keep exporting functions and 
 #' environment variables to other scripts
 .origfiles <- ls();
-#' Do not remap the following variables specified by `r basename(dctfile_raw)`
-.levels_map_ignore <- c('AGE','DX_LASTCONTACT_DEATH_MONTHS'
-                        ,'RAD_ELAPSED_RX_DAYS','RAD_NUM_TREAT_VOL'
-                        ,'RAD_REGIONAL_DOSE_CGY','TUMOR_SIZE');
 #' 
 # make data dictionary ---------------------------------------------------------
 #' Create the data dictionary
@@ -62,7 +58,8 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
       read_delim(.,'"',col_names=F,skip = 1,trim_ws=T) %>% select(1:2) %>% 
       cbind(var=xx[3],stringsAsFactors=F)}) %>% 
   do.call(rbind,.) %>% set_names(c('code','label','varname')) %>% 
-  subset(!varname %in% .levels_map_ignore);
+  #subset(!varname %in% .levels_map_ignore);
+  subset(!varname %in% v(c_donotmap));
 #' 
 #' This allows persistent tweaks to level names
 if(file.exists(levels_map_file)){

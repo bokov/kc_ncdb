@@ -36,7 +36,7 @@ dat1 <- dat0;
 #                         ,searchrep=as.matrix(na.omit(dct0[,c('colname','varname')]))
 #                         ,method='startsends');
 #' Mass relabel/reorder factor variables.
-for(.ii in unique(levels_map$varname)){
+for(.ii in setdiff(levels_map$varname,v(c_donotmap))){
   dat1[[.ii]] <- factorclean(dat1[[.ii]],spec_mapper = levels_map,var=.ii
                             ,droplevels = T)};
 #' 

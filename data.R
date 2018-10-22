@@ -64,13 +64,25 @@ dat1$a_eth <- with(dat1
                               ,TRUE ~ 
                                 as.character(a_race)));
 #' Simplify the TNM_PATH_T variable
-dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
+dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.);
+# subsets ---------------------------------------------------------------
+sbs0 <- alist(kidney=PRIMARY_SITE=='C649',
+              # analyze stage IV separately
+              no_stg4=ANALYTIC_STAGE_GROUP!='4: Stage IV',
+              # only do the surgical cases
+              surgery=REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+                # only do the surgical cases
+                RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site',
+              # only the patients who are presenting with their first ever tumor
+              firstcancer=SEQUENCE_NUMBER=='00') %>% lapply(function(xx) with(dat1,PUF_CASE_ID[eval(xx)]));
+sbs0$eligib0 <- Reduce(intersect,sbs0);
+
 # dummy variables -------------------------------------------------------
 #' Create dummy variables for univariate analysis of individual levels where
 #' applicable
-dat2 <- dummy.data.frame(dat1
-                         ,names=setdiff(v(c_discrete),v(c_nonanalytic))
-                         ,omit.constants = F,dummy.classes = '',sep=':::');
+dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>% 
+  dummy.data.frame(names=setdiff(v(c_discrete),c(v(c_missingmap),v(c_nonanalytic)))
+                   ,omit.constants = F,dummy.classes = '',sep=':::');
 #' 
 #' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
 #'   mutate( NAACCR=patient_num %in% kcpatients.naaccr
@@ -84,22 +96,22 @@ dat2 <- dummy.data.frame(dat1
 # cox ph ----------
 #' Bulk univariate analysis
 .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
-               ,data=dat2
-               # no renal pelvis
-               ,subset=PRIMARY_SITE=='C649'&
-                 # analyze stage IV separately
-                 ANALYTIC_STAGE_GROUP!='4: Stage IV'&
-                 # only do the surgical cases
-                 REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
-                 # only do the surgical cases
-                 RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
-                 # only the patients who are presenting with their first ever tumor
-                 SEQUENCE_NUMBER=='00');
+               ,data=dat2)
+               # # no renal pelvis
+               # ,subset=PRIMARY_SITE=='C649'&
+               #   # analyze stage IV separately
+               #   ANALYTIC_STAGE_GROUP!='4: Stage IV'&
+               #   # only do the surgical cases
+               #   REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+               #   # only do the surgical cases
+               #   RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
+               #   # only the patients who are presenting with their first ever tumor
+               #   SEQUENCE_NUMBER=='00');
 
 cph_uni <- setdiff(names(dat2),v(c_nonanalytic)) %>% 
-  sapply(function(xx) try(update(.cph0,paste0('.~',xx))),simplify=F);
+  sapply(function(xx) try(update(.cph0,paste0('.~`',xx,'`'))),simplify=F);
 cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-  sapply(glance,simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 
+  sapply(function(xx) c(tidy(xx),glance(xx)),simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 
   cbind(var=rownames(.),.) %>% arrange(desc(concordance)) %>% 
   mutate(p.sc.adj=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------

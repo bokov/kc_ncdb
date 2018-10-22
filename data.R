@@ -65,6 +65,12 @@ dat1$a_eth <- with(dat1
                                 as.character(a_race)));
 #' Simplify the TNM_PATH_T variable
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
+# dummy variables -------------------------------------------------------
+#' Create dummy variables for univariate analysis of individual levels where
+#' applicable
+dat2 <- dummy.data.frame(dat1
+                         ,names=v(c_discrete)
+                         ,omit.constants = F,dummy.classes = '',sep=':::');
 #' 
 #' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
 #'   mutate( NAACCR=patient_num %in% kcpatients.naaccr
@@ -78,7 +84,7 @@ dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 # cox ph ----------
 #' Bulk univariate analysis
 .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
-               ,data=dat1
+               ,data=dat2
                # no renal pelvis
                ,subset=PRIMARY_SITE=='C649'&
                  # analyze stage IV separately
@@ -90,7 +96,7 @@ dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
                  # only the patients who are presenting with their first ever tumor
                  SEQUENCE_NUMBER=='00');
 
-cph_uni <- setdiff(names(dat1),v(c_nonanalytic)) %>% 
+cph_uni <- setdiff(names(dat2),v(c_nonanalytic)) %>% 
   sapply(function(xx) try(update(.cph0,paste0('.~',xx))),simplify=F);
 cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
   sapply(glance,simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 

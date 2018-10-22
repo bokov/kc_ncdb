@@ -1,501 +1,501 @@
-"code","relabel","label","varname"
-1,,"1: Community Cancer Program","FACILITY_TYPE_CD"
-2,,"2: Comprehensive Community Cancer Program","FACILITY_TYPE_CD"
-3,,"3: Academic/Research Program","FACILITY_TYPE_CD"
-4,,"4: Integrated Network Cancer Program","FACILITY_TYPE_CD"
-9,,"9: Other specified types of cancer programs","FACILITY_TYPE_CD"
-1,,"1: New England","FACILITY_LOCATION_CD"
-2,,"2: Middle Atlantic","FACILITY_LOCATION_CD"
-3,,"3: South Atlantic","FACILITY_LOCATION_CD"
-4,,"4: East North Central","FACILITY_LOCATION_CD"
-5,,"5: East South Central","FACILITY_LOCATION_CD"
-6,,"6: West North Central","FACILITY_LOCATION_CD"
-7,,"7: West South Central","FACILITY_LOCATION_CD"
-8,,"8: Mountain","FACILITY_LOCATION_CD"
-9,,"9: Pacific","FACILITY_LOCATION_CD"
-0,,"0: Out of US","FACILITY_LOCATION_CD"
-1,"White","1: White","RACE"
-2,"Black","2: Black","RACE"
-3,"Other","3: American Indian, Aleutian, or Eskimo","RACE"
-4,"Other","4: Chinese","RACE"
-5,"Other","5: Japanese","RACE"
-6,"Other","6: Filipino","RACE"
-7,"Other","7: Hawaiian","RACE"
-8,"Other","8: Korean","RACE"
-10,"Other","10: Vietnamese","RACE"
-11,"Other","11: Laotian","RACE"
-12,"Other","12: Hmong","RACE"
-13,"Other","13: Kampuchean","RACE"
-14,"Other","14: Thai","RACE"
-15,"Other","15: Asian Indian or Pakistani","RACE"
-16,"Other","16: Asian Indian","RACE"
-17,"Other","17: Pakistani","RACE"
-20,"Other","20: Micronesian, NOS","RACE"
-21,"Other","21: Chamorran","RACE"
-22,"Other","22: Guamanian, NOS","RACE"
-25,"Other","25: Polynesian, NOS","RACE"
-26,"Other","26: Tahitian","RACE"
-27,"Other","27: Samoan","RACE"
-28,"Other","28: Tongan","RACE"
-30,"Other","30: Melanesian, NOS","RACE"
-31,"Other","31: Fiji Islander","RACE"
-32,"Other","32: New Guinean","RACE"
-96,"Other","96: Other Asian, including Asian, NOS and Oriental, NOS","RACE"
-97,"Other","97: Pacific Islander, NOS","RACE"
-98,"Other","98: Other","RACE"
-99,"Unknown","99: Unknown","RACE"
-1,,"1: Male","SEX"
-2,,"2: Female","SEX"
-3,,"3: Other/Hermaphrodite","SEX"
-4,,"4: Transsexual","SEX"
-9,,"9: Not stated in patient record","SEX"
-0,,"0: Not Insured","INSURANCE_STATUS"
-1,,"1: Private Insurance","INSURANCE_STATUS"
-2,,"2: Medicaid","INSURANCE_STATUS"
-3,,"3: Medicare","INSURANCE_STATUS"
-4,,"4: Other Government","INSURANCE_STATUS"
-9,,"9: Insurance Status Unknown","INSURANCE_STATUS"
-0,"non-Hispanic","0: Non-Spanish; non-Hispanic","SPANISH_HISPANIC_ORIGIN"
-1,"Hispanic","1: Mexican/Chicano","SPANISH_HISPANIC_ORIGIN"
-2,"Hispanic","2: Puerto Rican","SPANISH_HISPANIC_ORIGIN"
-3,"Hispanic","3: Cuban","SPANISH_HISPANIC_ORIGIN"
-4,"Hispanic","4: South or Central America","SPANISH_HISPANIC_ORIGIN"
-5,"Hispanic","5: Other specified Spanish/Hispanic origin","SPANISH_HISPANIC_ORIGIN"
-6,"Hispanic","6: Spanish, NOS Hispanic, NOS Latino, NOS","SPANISH_HISPANIC_ORIGIN"
-7,"Hispanic","7: Spanish surname only","SPANISH_HISPANIC_ORIGIN"
-8,"Hispanic","8: Dominican Republic","SPANISH_HISPANIC_ORIGIN"
-9,"Unknown","9: Unknown","SPANISH_HISPANIC_ORIGIN"
-1,,"< $30,000","MED_INC_QUAR_00"
-2,,"$30,000 - $35,999","MED_INC_QUAR_00"
-3,,"$36,000 - $45,999","MED_INC_QUAR_00"
-4,,"$46,000 +","MED_INC_QUAR_00"
-1,,">=29%","NO_HSD_QUAR_00"
-2,,"20% - 28.9%","NO_HSD_QUAR_00"
-3,,"14% - 19.9%","NO_HSD_QUAR_00"
-4,,"<14%","NO_HSD_QUAR_00"
-1,,"1: Counties in metro areas of 1 million population or more","UR_CD_03"
-2,,"2: Counties in metro areas of 250,000 to 1 million population","UR_CD_03"
-3,,"3: Counties in metro areas of fewer than 250,000 population","UR_CD_03"
-4,,"4: Urban population of 20,000 or more adjacent to a metro area","UR_CD_03"
-5,,"5: Urban population of 20,000 or more not adjacent to a metro area","UR_CD_03"
-6,,"6: Urban population of 2,500 to 19,999, adjacent to a metro area","UR_CD_03"
-7,,"7: Urban population of 2,500 to 19,999, not adjacent to a metro area","UR_CD_03"
-8,,"8: Completely rural or less than 2,500 urban population, adjacent to a metro area","UR_CD_03"
-9,,"9: Completely rural or less than 2,500 urban population, not adjacent to a metro area","UR_CD_03"
-1,,"< $38,000","MED_INC_QUAR_12"
-2,,"$38,000 - $47,999","MED_INC_QUAR_12"
-3,,"$48,000 - $62,999","MED_INC_QUAR_12"
-4,,"$63,000 +","MED_INC_QUAR_12"
-1,,">=21%","NO_HSD_QUAR_12"
-2,,"13% - 20.9%","NO_HSD_QUAR_12"
-3,,"7% - 12.9%","NO_HSD_QUAR_12"
-4,,"<7","NO_HSD_QUAR_12"
-1,,"1: Counties in metro areas of 1 million population or more","UR_CD_13"
-2,,"2: Counties in metro areas of 250,000 to 1 million population","UR_CD_13"
-3,,"3: Counties in metro areas of fewer than 250,000 population","UR_CD_13"
-4,,"4: Urban population of 20,000 or more adjacent to a metro area","UR_CD_13"
-5,,"5: Urban population of 20,000 or more not adjacent to a metro area","UR_CD_13"
-6,,"6: Urban population of 2,500 to 19,999, adjacent to a metro area","UR_CD_13"
-7,,"7: Urban population of 2,500 to 19,999, not adjacent to a metro area","UR_CD_13"
-8,,"8: Completely rural or less than 2,500 urban population, adjacent to a metro area","UR_CD_13"
-9,,"9: Completely rural or less than 2,500 urban population, not adjacent to a metro area","UR_CD_13"
-0,,"0: Dx at reporting facility, all treatment decisions done elsewhere","CLASS_OF_CASE"
-10,,"10: Dx and part or all of 1st course treatment or a decision not to treat was at the reporting facility, NOS","CLASS_OF_CASE"
-11,,"11: Dx in staff physician's office and part of 1st course treatment at the reporting facility","CLASS_OF_CASE"
-12,,"12: Dx in a staff physician's office and all of 1st course treatment at the reporting facility","CLASS_OF_CASE"
-13,,"13: Dx and part of first course Rx at reporting facility, part of first course treatment elsewhere","CLASS_OF_CASE"
-14,,"14: Dx at reporting facility and all first course treatment at the reporting facility","CLASS_OF_CASE"
-20,,"20: Dx elsewhere and all or part of 1st course treatment or a decision not to treat at the reporting facility, NOS","CLASS_OF_CASE"
-21,,"21: Dx elsewhere and part of 1st course treatment at the reporting facility part of first course treatment elsewhere","CLASS_OF_CASE"
-22,,"22: Dx elsewhere and all of first course treatment or a decision not to treat at the reporting facility","CLASS_OF_CASE"
-0,,"0: Organ is not considered to be a paired site","LATERALITY"
-1,,"1: Origin of primary is right","LATERALITY"
-2,,"2: Origin of primary is left","LATERALITY"
-3,,"3: Only one side involved, right or left origin not specified","LATERALITY"
-4,,"4: Bilateral involvement","LATERALITY"
-5,,"5: Paired site midline tumor","LATERALITY"
-9,,"9: Paired site, but lateral origin unknown, midline tumor","LATERALITY"
-0,,"0: Benign","BEHAVIOR"
-1,,"1: Borderline","BEHAVIOR"
-2,,"2: In situ and/or carcinoma in situ","BEHAVIOR"
-3,,"3: Invasive","BEHAVIOR"
-1,,"1: Well differentiated, differentiated, NOS","GRADE"
-2,,"2: Moderately differentiated, moderately well differentiated, intermediate differentiation","GRADE"
-3,,"3: Poorly differentiated","GRADE"
-4,,"4: Undifferentiated, anaplastic","GRADE"
-5,,"5: T cell T-precursor","GRADE"
-6,,"6: B cell, pre-B, B-precursor","GRADE"
-7,,"7: Null cell non T-non B","GRADE"
-8,,"8: NK (natural killer) cell","GRADE"
-9,,"9: Cell type not determined, not stated or not applicable, unknown primaries, high grade dysplasia","GRADE"
-0,,"0: All nodes examined are negative","REGIONAL_NODES_POSITIVE"
-90,,"90: 90 or more nodes are positive","REGIONAL_NODES_POSITIVE"
-95,,"95: Positive aspiration of lymph node(s) was performed","REGIONAL_NODES_POSITIVE"
-97,,"97: Positive nodes are documented, but the number is unspecified","REGIONAL_NODES_POSITIVE"
-98,,"98: No nodes were examined","REGIONAL_NODES_POSITIVE"
-99,,"99: Unknown whether nodes are positive, not applicable, not stated in patient record","REGIONAL_NODES_POSITIVE"
-0,,"0: No nodes were examined","REGIONAL_NODES_EXAMINED"
-90,,"90: 90 or more nodes were examined","REGIONAL_NODES_EXAMINED"
-95,,"95: No regional nodes were removed, but aspiration of regional nodes was performed","REGIONAL_NODES_EXAMINED"
-96,,"96: Regional lymph node removal was documented as a sampling, and the number of nodes is unknown/not stated","REGIONAL_NODES_EXAMINED"
-97,,"97: Regional lymph node removal was documented as a dissection, and the number of nodes is unknown/not stated","REGIONAL_NODES_EXAMINED"
-98,,"98: Regional lymph nodes surgically removed but number not documented, not documented as sampling or dissection","REGIONAL_NODES_EXAMINED"
-99,,"99: Unknown if regional nodes examined, not applicable for this site-histology combination","REGIONAL_NODES_EXAMINED"
-0,,"0: No surgical diagnostic or staging procedure was performed","RX_SUMM_DXSTG_PROC"
-1,,"1: A biopsy was done to a site other than the primary","RX_SUMM_DXSTG_PROC"
-2,,"2: A biopsy (incisional, needle, or aspiration) was done to the primary site","RX_SUMM_DXSTG_PROC"
-3,,"3: A surgical exploration only","RX_SUMM_DXSTG_PROC"
-4,,"4: A surgical procedure with a bypass was performed, but no biopsy was done","RX_SUMM_DXSTG_PROC"
-5,,"5: An exploratory procedure was performed, and a biopsy of either the primary site or another site was done","RX_SUMM_DXSTG_PROC"
-6,,"6: A bypass procedure was performed, and a biopsy of either the primary site or another site was done","RX_SUMM_DXSTG_PROC"
-7,,"7: A procedure was done, but the type of procedure is unknown","RX_SUMM_DXSTG_PROC"
-9,,"9: No information of whether a diagnostic or staging procedure was performed","RX_SUMM_DXSTG_PROC"
-0,,"0: Not staged(cases that have AJCC staging scheme and staging was not done)","TNM_EDITION_NUMBER"
-5,,"5: Fifth Edition","TNM_EDITION_NUMBER"
-6,,"6: Sixth Edition","TNM_EDITION_NUMBER"
-7,,"7: Seventh Edition","TNM_EDITION_NUMBER"
-88,,"88: Not applicable (cases that do not have an AJCC staging scheme)","TNM_EDITION_NUMBER"
-99,,"99: Staged, but the edition is unknown, Prior to the 5th edition","TNM_EDITION_NUMBER"
-0,,"0: Stage 0","ANALYTIC_STAGE_GROUP"
-1,,"1: Stage I","ANALYTIC_STAGE_GROUP"
-2,,"2: Stage II","ANALYTIC_STAGE_GROUP"
-3,,"3: Stage III","ANALYTIC_STAGE_GROUP"
-4,,"4: Stage IV","ANALYTIC_STAGE_GROUP"
-5,,"5: Occult (lung only)","ANALYTIC_STAGE_GROUP"
-8,,"8: AJCC Staging not applicable","ANALYTIC_STAGE_GROUP"
-9,,"9: AJCC Stage Group unknown","ANALYTIC_STAGE_GROUP"
-0,,"0: None","CS_METS_DX_BONE"
-1,,"1: Yes","CS_METS_DX_BONE"
-8,,"8: Not Applicable","CS_METS_DX_BONE"
-9,,"9: Unknown","CS_METS_DX_BONE"
-0,,"0: None","CS_METS_DX_BRAIN"
-1,,"1: Yes","CS_METS_DX_BRAIN"
-8,,"8: Not Applicable","CS_METS_DX_BRAIN"
-9,,"9: Unknown","CS_METS_DX_BRAIN"
-0,,"0: None","CS_METS_DX_LIVER"
-1,,"1: Yes","CS_METS_DX_LIVER"
-8,,"8: Not Applicable","CS_METS_DX_LIVER"
-9,,"9: Unknown","CS_METS_DX_LIVER"
-0,,"0: None","CS_METS_DX_LUNG"
-1,,"1: Yes","CS_METS_DX_LUNG"
-8,,"8: Not Applicable","CS_METS_DX_LUNG"
-9,,"9: Unknown","CS_METS_DX_LUNG"
-0,,"0: Not present","LYMPH_VASCULAR_INVASION"
-1,,"1: Present","LYMPH_VASCULAR_INVASION"
-8,,"8: Not applicable","LYMPH_VASCULAR_INVASION"
-9,,"9: Unknown","LYMPH_VASCULAR_INVASION"
-0,,"0: No surgical procedure of primary site","RX_HOSP_SURG_APPR_2010"
-1,,"1: Robotic assisted","RX_HOSP_SURG_APPR_2010"
-2,,"2: Robotic converted to open","RX_HOSP_SURG_APPR_2010"
-3,,"3: Laparoscopic","RX_HOSP_SURG_APPR_2010"
-4,,"4: Laparoscopic converted to open","RX_HOSP_SURG_APPR_2010"
-5,,"5: Open or approach unspecified","RX_HOSP_SURG_APPR_2010"
-9,,"9: Unknown if surgery performed","RX_HOSP_SURG_APPR_2010"
-0,,"0: No residual tumor All margins are grossly and microscopically negative","RX_SUMM_SURGICAL_MARGINS"
-1,,"1: Residual tumor, NOS  Involvement is indicated, but not otherwise specified","RX_SUMM_SURGICAL_MARGINS"
-2,,"2: Microscopic residual tumor Cannot be seen by the naked eye","RX_SUMM_SURGICAL_MARGINS"
-3,,"3: Macroscopic residual tumor, Gross tumor of the primary site which is visible to the naked eye","RX_SUMM_SURGICAL_MARGINS"
-7,,"7: Margins not evaluable, Cannot be assessed (indeterminate)","RX_SUMM_SURGICAL_MARGINS"
-8,,"8: No primary site surgery, No surgical procedure of the primary site Diagnosed at autopsy","RX_SUMM_SURGICAL_MARGINS"
-9,,"9: Unknown or not applicable","RX_SUMM_SURGICAL_MARGINS"
-0,,"0: No regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR"
-1,,"1: Regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR"
-9,,"9: Unknown if there was any regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR"
-0,,"0: None","RX_SUMM_SURG_OTH_REGDIS"
-1,,"1: Nonprimary surgical procedure performed","RX_SUMM_SURG_OTH_REGDIS"
-2,,"2: Nonprimary surgical procedure to other regional sites","RX_SUMM_SURG_OTH_REGDIS"
-3,,"3: Nonprimary surgical procedure to distant lymph node(s)","RX_SUMM_SURG_OTH_REGDIS"
-4,,"4: Nonprimary surgical procedure to distant site","RX_SUMM_SURG_OTH_REGDIS"
-5,,"5: Combination of codes","RX_SUMM_SURG_OTH_REGDIS"
-9,,"9: Unknown","RX_SUMM_SURG_OTH_REGDIS"
-0,,"0: No surgical procedure of the primary site was performed, or patient not readmitted","READM_HOSP_30_DAYS"
-1,,"1: Unplanned readmission within 30 days of discharge","READM_HOSP_30_DAYS"
-2,,"2: Planned readmission within 30 days of discharge","READM_HOSP_30_DAYS"
-3,,"3: Planned and unplanned readmission within 30 days of discharge","READM_HOSP_30_DAYS"
-9,,"9: Unknown if surgery recommended/performed, unknown if readmitted within 30 days of discharge","READM_HOSP_30_DAYS"
-0,,"0: Surgery of the primary site was performed","REASON_FOR_NO_SURGERY"
-1,,"1: Surgery not performed because it was not part of the planned first course treatment","REASON_FOR_NO_SURGERY"
-2,,"2: Surgery was not recommended/performed, contraindicated due to patient risk factors","REASON_FOR_NO_SURGERY"
-5,,"5: Surgery not performed because the patient died prior to planned or recommended surgery","REASON_FOR_NO_SURGERY"
-6,,"6: Surgery was recommeded by physician but not performed, No reason was noted in patient record","REASON_FOR_NO_SURGERY"
-7,,"7: Surgery was recommended but was refused by the patient, patient's family member or guardian","REASON_FOR_NO_SURGERY"
-8,,"8: Surgery was recommended, but unknown if performed","REASON_FOR_NO_SURGERY"
-9,,"9: Unknown if surgery was recommended or performed, Diagnosed at autopsy or death certificate only","REASON_FOR_NO_SURGERY"
-0,,"0: None","RX_SUMM_RADIATION"
-1,,"1: Beam radiation","RX_SUMM_RADIATION"
-2,,"2: Radioactive implants","RX_SUMM_RADIATION"
-3,,"3: Radioisotopes","RX_SUMM_RADIATION"
-4,,"4: Combination of beam radiation with radioactive implants or radioisotopes","RX_SUMM_RADIATION"
-5,,"5: Radiation therapy, NOS","RX_SUMM_RADIATION"
-9,,"9: Unknown","RX_SUMM_RADIATION"
-0,,"0: No radiation therapy administered","RAD_LOCATION_OF_RX"
-1,,"1: All radiation treatment at this facility","RAD_LOCATION_OF_RX"
-2,,"2: Regional treatment at this facility, boost elsewhere","RAD_LOCATION_OF_RX"
-3,,"3: Boost radiation at this facility, regional elsewhere","RAD_LOCATION_OF_RX"
-4,,"4: All radiation treatment elsewhere","RAD_LOCATION_OF_RX"
-8,,"8: Other","RAD_LOCATION_OF_RX"
-9,,"9: Unknown","RAD_LOCATION_OF_RX"
-0,,"0: No radiation treatment","RAD_TREAT_VOL"
-1,,"1: Eye/Orbit","RAD_TREAT_VOL"
-2,,"2: Pituitary","RAD_TREAT_VOL"
-3,,"3: Brain (NOS)","RAD_TREAT_VOL"
-4,,"4: Brain (limited)","RAD_TREAT_VOL"
-5,,"5: Head and neck (NOS)","RAD_TREAT_VOL"
-6,,"6: Head and neck (limited)","RAD_TREAT_VOL"
-7,,"7: Glottis","RAD_TREAT_VOL"
-8,,"8: Sinuses","RAD_TREAT_VOL"
-9,,"9: Parotid","RAD_TREAT_VOL"
-10,,"10: Chest/Lung (NOS)","RAD_TREAT_VOL"
-11,,"11: Lung (limited)","RAD_TREAT_VOL"
-12,,"12: Esophagus","RAD_TREAT_VOL"
-13,,"13: Stomach","RAD_TREAT_VOL"
-14,,"14: Liver","RAD_TREAT_VOL"
-15,,"15: Pancreas","RAD_TREAT_VOL"
-16,,"16: Kidney","RAD_TREAT_VOL"
-17,,"17: Abdomen (NOS)","RAD_TREAT_VOL"
-18,,"18: Breast","RAD_TREAT_VOL"
-19,,"19: Breast/Lymph nodes","RAD_TREAT_VOL"
-20,,"20: Chest wall","RAD_TREAT_VOL"
-21,,"21: Chest wall/Lymph nodes","RAD_TREAT_VOL"
-22,,"22: Mantle, Mini-mantle","RAD_TREAT_VOL"
-23,,"23: Lower extended field","RAD_TREAT_VOL"
-24,,"24: Spine","RAD_TREAT_VOL"
-25,,"25: Skull","RAD_TREAT_VOL"
-26,,"26: Ribs","RAD_TREAT_VOL"
-27,,"27: Hip","RAD_TREAT_VOL"
-28,,"28: Pelvic bones","RAD_TREAT_VOL"
-29,,"29: Pelvis (NOS)","RAD_TREAT_VOL"
-30,,"30: Skin","RAD_TREAT_VOL"
-31,,"31: Soft tissue","RAD_TREAT_VOL"
-32,,"32: Hemibody","RAD_TREAT_VOL"
-33,,"33: Whole body","RAD_TREAT_VOL"
-34,,"34: Bladder and pelvis","RAD_TREAT_VOL"
-35,,"35: Prostate and pelvis","RAD_TREAT_VOL"
-36,,"36: Uterus and cervix","RAD_TREAT_VOL"
-37,,"37: Shoulder","RAD_TREAT_VOL"
-38,,"38: Extremity bone, NOS","RAD_TREAT_VOL"
-39,,"39: Inverted Y","RAD_TREAT_VOL"
-40,,"40: Spinal cord","RAD_TREAT_VOL"
-41,,"41: Prostate","RAD_TREAT_VOL"
-50,,"50: Thyroid","RAD_TREAT_VOL"
-60,,"60: Lymph node region, NOS","RAD_TREAT_VOL"
-98,,"98: Other","RAD_TREAT_VOL"
-99,,"99: Unknown","RAD_TREAT_VOL"
-0,,"0: No radiation treatment","RAD_REGIONAL_RX_MODALITY"
-20,,"20: External beam, NOS","RAD_REGIONAL_RX_MODALITY"
-21,,"21: Orthovoltage","RAD_REGIONAL_RX_MODALITY"
-22,,"22: Cobalt-60, Cesium-137","RAD_REGIONAL_RX_MODALITY"
-23,,"23: Photons (2-5 MV)","RAD_REGIONAL_RX_MODALITY"
-24,,"24: Photons (6-10 MV)","RAD_REGIONAL_RX_MODALITY"
-25,,"25: Photons (11-19 MV)","RAD_REGIONAL_RX_MODALITY"
-26,,"26: Photons (>19 MV)","RAD_REGIONAL_RX_MODALITY"
-27,,"27: Photons (mixed energies)","RAD_REGIONAL_RX_MODALITY"
-28,,"28: Electrons","RAD_REGIONAL_RX_MODALITY"
-29,,"29: Photons and electrons mixed","RAD_REGIONAL_RX_MODALITY"
-30,,"30: Neutrons, with or without photons/electrons","RAD_REGIONAL_RX_MODALITY"
-31,,"31: IMRT","RAD_REGIONAL_RX_MODALITY"
-32,,"32: Conformal or 3-D therapy","RAD_REGIONAL_RX_MODALITY"
-40,,"40: Protons","RAD_REGIONAL_RX_MODALITY"
-41,,"41: Stereotactic radiosurgery, NOS","RAD_REGIONAL_RX_MODALITY"
-42,,"42: Linac radiosurgery","RAD_REGIONAL_RX_MODALITY"
-43,,"43: Gamma Knife","RAD_REGIONAL_RX_MODALITY"
-50,,"50: Brachytherapy, NOS","RAD_REGIONAL_RX_MODALITY"
-51,,"51: Brachytherapy, Intracavitary, LDR","RAD_REGIONAL_RX_MODALITY"
-52,,"52: Brachytherapy, Intracavitary, HDR","RAD_REGIONAL_RX_MODALITY"
-53,,"53: Brachytherapy, Interstitial, LDR","RAD_REGIONAL_RX_MODALITY"
-54,,"54: Brachytherapy, Interstitial, HDR","RAD_REGIONAL_RX_MODALITY"
-55,,"55: Radium","RAD_REGIONAL_RX_MODALITY"
-60,,"60: Radioisotopes, NOS","RAD_REGIONAL_RX_MODALITY"
-61,,"61: Strontium-89","RAD_REGIONAL_RX_MODALITY"
-62,,"62: Strontium-90","RAD_REGIONAL_RX_MODALITY"
-80,,"80: Combination modality, specified","RAD_REGIONAL_RX_MODALITY"
-85,,"85: Combination modality, NOS","RAD_REGIONAL_RX_MODALITY"
-98,,"98: Other, NOS","RAD_REGIONAL_RX_MODALITY"
-99,,"99: Unknown","RAD_REGIONAL_RX_MODALITY"
-0,,"0: No radiation treatment","RAD_BOOST_RX_MODALITY"
-20,,"20: External beam, NOS","RAD_BOOST_RX_MODALITY"
-21,,"21: Orthovoltage","RAD_BOOST_RX_MODALITY"
-22,,"22: Cobalt-60, Cesium-137","RAD_BOOST_RX_MODALITY"
-23,,"23: Photons (2-5 MV)","RAD_BOOST_RX_MODALITY"
-24,,"24: Photons (6-10 MV)","RAD_BOOST_RX_MODALITY"
-25,,"25: Photons (11-19 MV)","RAD_BOOST_RX_MODALITY"
-26,,"26: Photons (>19 MV)","RAD_BOOST_RX_MODALITY"
-27,,"27: Photons (mixed energies)","RAD_BOOST_RX_MODALITY"
-28,,"28: Electrons","RAD_BOOST_RX_MODALITY"
-29,,"29: Photons and electrons mixed","RAD_BOOST_RX_MODALITY"
-30,,"30: Neutrons, with or without photons/electrons","RAD_BOOST_RX_MODALITY"
-31,,"31: IMRT","RAD_BOOST_RX_MODALITY"
-32,,"32: Conformal or 3-D therapy","RAD_BOOST_RX_MODALITY"
-40,,"40: Protons","RAD_BOOST_RX_MODALITY"
-41,,"41: Stereotactic radiosurgery, NOS","RAD_BOOST_RX_MODALITY"
-42,,"42: Linac radiosurgery","RAD_BOOST_RX_MODALITY"
-43,,"43: Gamma Knife","RAD_BOOST_RX_MODALITY"
-50,,"50: Brachytherapy, NOS","RAD_BOOST_RX_MODALITY"
-51,,"51: Brachytherapy, Intracavitary, LDR","RAD_BOOST_RX_MODALITY"
-52,,"52: Brachytherapy, Intracavitary, HDR","RAD_BOOST_RX_MODALITY"
-53,,"53: Brachytherapy, Interstitial, LDR","RAD_BOOST_RX_MODALITY"
-54,,"54: Brachytherapy, Interstitial, HDR","RAD_BOOST_RX_MODALITY"
-55,,"55: Radium","RAD_BOOST_RX_MODALITY"
-60,,"60: Radioisotopes, NOS","RAD_BOOST_RX_MODALITY"
-61,,"61: Strontium-89","RAD_BOOST_RX_MODALITY"
-62,,"62: Strontium-90","RAD_BOOST_RX_MODALITY"
-98,,"98: Other, NOS","RAD_BOOST_RX_MODALITY"
-99,,"99: Unknown","RAD_BOOST_RX_MODALITY"
-0,,"Not administered","RAD_BOOST_DOSE_CGY"
-88888,,"Not applicable","RAD_BOOST_DOSE_CGY"
-99999,,"Unknown","RAD_BOOST_DOSE_CGY"
-0,,"0: No radiation therapy and/or surgical procedures","RX_SUMM_SURGRAD_SEQ"
-2,,"2: Radiation therapy before surgery","RX_SUMM_SURGRAD_SEQ"
-3,,"3: Radiation therapy after surgery","RX_SUMM_SURGRAD_SEQ"
-4,,"4: Radiation therapy both before and after surgery","RX_SUMM_SURGRAD_SEQ"
-5,,"5: Intraoperative radiation therapy","RX_SUMM_SURGRAD_SEQ"
-6,,"6: Intraoperative radiation therapy with other therapy administered before or after surgery","RX_SUMM_SURGRAD_SEQ"
-9,,"9: Sequence unknown","RX_SUMM_SURGRAD_SEQ"
-0,,"0: Radiation therapy was administered","REASON_FOR_NO_RADIATION"
-1,,"1: Radiation was not part of the planned first course treatment","REASON_FOR_NO_RADIATION"
-2,,"2: Radiation contraindicated due to other patient risk factors","REASON_FOR_NO_RADIATION"
-5,,"5: Patient died prior to planned or recommended therapy","REASON_FOR_NO_RADIATION"
-6,,"6: Radiation recommended but not administered, no reason was noted","REASON_FOR_NO_RADIATION"
-7,,"7: Radiation recommended but refused by the patient, patient's family member or guardian","REASON_FOR_NO_RADIATION"
-8,,"8: Radiation recommended, unknown whether administered","REASON_FOR_NO_RADIATION"
-9,,"9: Unknown if recommended or administered","REASON_FOR_NO_RADIATION"
-0,,"0: None","RX_SUMM_CHEMO"
-1,,"1: Chemotherapy administered, type and number of agents not documented","RX_SUMM_CHEMO"
-2,,"2: Single-agent chemotherapy","RX_SUMM_CHEMO"
-3,,"3: Multiagent chemotherapy","RX_SUMM_CHEMO"
-82,,"82: Chemotherapy not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_CHEMO"
-85,,"85: Chemotherapy not administered, patient died prior to planned or recommended therapy","RX_SUMM_CHEMO"
-86,,"86: Chemotherapy not administered, was recommended, not administered Reason unknown","RX_SUMM_CHEMO"
-87,,"87: Chemotherapy not administered, recommended, but refused by patient, patient's family member or guardian","RX_SUMM_CHEMO"
-88,,"88: Chemotherapy recommended, unknown if administered","RX_SUMM_CHEMO"
-99,,"99: Unknown if recommended or administered","RX_SUMM_CHEMO"
-0,,"0: None","RX_HOSP_CHEMO"
-1,,"1: Chemotherapy administered, type and number of agents not documented","RX_HOSP_CHEMO"
-2,,"2: Single-agent chemotherapy","RX_HOSP_CHEMO"
-3,,"3: Multiagent chemotherapy","RX_HOSP_CHEMO"
-82,,"82: Chemotherapy not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_CHEMO"
-85,,"85: Chemotherapy not administered, patient died prior to planned or recommended therapy","RX_HOSP_CHEMO"
-86,,"86: Chemotherapy not administered, was recommended, not administered Reason unknown","RX_HOSP_CHEMO"
-87,,"87: Chemotherapy not administered, recommended, but refused by patient, patient's family member or guardian","RX_HOSP_CHEMO"
-88,,"88: Chemotherapy recommended, unknown if administered","RX_HOSP_CHEMO"
-99,,"99: Unknown if recommended or administered","RX_HOSP_CHEMO"
-0,,"0: None","RX_SUMM_HORMONE"
-1,,"1: Hormone therapy administered as first course therapy","RX_SUMM_HORMONE"
-82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_HORMONE"
-85,,"85: Hormone therapy not administered, patient died prior to planned or recommended therapy","RX_SUMM_HORMONE"
-86,,"86: Recommended but not administered, no reason stated","RX_SUMM_HORMONE"
-87,,"87: Recommended, not administered, refused by patient, patient's family member or guardian","RX_SUMM_HORMONE"
-88,,"88: Hormone therapy recommended, unknown if administered","RX_SUMM_HORMONE"
-99,,"99: Unknown if recommended or administered","RX_SUMM_HORMONE"
-0,,"0: None","RX_HOSP_HORMONE"
-1,,"1: Hormone therapy administered as first course therapy","RX_HOSP_HORMONE"
-82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_HORMONE"
-85,,"85: Hormone therapy not administered, patient died prior to planned or recommended therapy","RX_HOSP_HORMONE"
-86,,"86: Recommended but not administered, no reason stated","RX_HOSP_HORMONE"
-87,,"87: Recommended, not administered, refused by patient, patient's family member or guardian","RX_HOSP_HORMONE"
-88,,"88: Hormone therapy recommended, unknown if administered","RX_HOSP_HORMONE"
-99,,"99: Unknown if recommended or administered","RX_HOSP_HORMONE"
-0,,"0: None","RX_SUMM_IMMUNOTHERAPY"
-1,,"1: Immunotherapy administered as first course therapy","RX_SUMM_IMMUNOTHERAPY"
-82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_IMMUNOTHERAPY"
-85,,"85: Not administered because the patient died prior to planned or recommended therapy","RX_SUMM_IMMUNOTHERAPY"
-86,,"86: Recommended, not administered, No reason given","RX_SUMM_IMMUNOTHERAPY"
-87,,"87: Recommended, not administered, refused by the patient, patient's family member or guardian","RX_SUMM_IMMUNOTHERAPY"
-88,,"88: Immunotherapy recommended, unknown if administered","RX_SUMM_IMMUNOTHERAPY"
-99,,"99: Unknown","RX_SUMM_IMMUNOTHERAPY"
-0,,"0: None","RX_HOSP_IMMUNOTHERAPY"
-1,,"1: Immunotherapy administered as first course therapy","RX_HOSP_IMMUNOTHERAPY"
-82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_IMMUNOTHERAPY"
-85,,"85: Not administered because the patient died prior to planned or recommended therapy","RX_HOSP_IMMUNOTHERAPY"
-86,,"86: Recommended, not administered, No reason given","RX_HOSP_IMMUNOTHERAPY"
-87,,"87: Recommended, not administered, refused by the patient, patient's family member or guardian","RX_HOSP_IMMUNOTHERAPY"
-88,,"88: Immunotherapy recommended, unknown if administered","RX_HOSP_IMMUNOTHERAPY"
-99,,"99: Unknown","RX_HOSP_IMMUNOTHERAPY"
-0,,"0: No transplant procedure or endocrine therapy administered","RX_SUMM_TRNSPLNT_ENDO"
-10,,"10: Bone marrow transplant procedure administered, type not specified","RX_SUMM_TRNSPLNT_ENDO"
-11,,"11: Bone marrow transplant, autologous","RX_SUMM_TRNSPLNT_ENDO"
-12,,"12: Bone marrow transplant, allogeneic","RX_SUMM_TRNSPLNT_ENDO"
-20,,"20: Stem cell harvest and infusion","RX_SUMM_TRNSPLNT_ENDO"
-30,,"30: Endocrine surgery and/or endocrine radiation therapy","RX_SUMM_TRNSPLNT_ENDO"
-40,,"40: Combination of endocrine surgery and/or radiation with a transplant procedure","RX_SUMM_TRNSPLNT_ENDO"
-82,,"82: Transplant/endocrine surgery/radiation not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_TRNSPLNT_ENDO"
-85,,"85: Transplant/endocrine surgery/radiation not administered,patient died prior to planned or recommended therapy","RX_SUMM_TRNSPLNT_ENDO"
-86,,"86: Recommended Transplant/endocrine/surgery/radiation but not administered no reason given","RX_SUMM_TRNSPLNT_ENDO"
-87,,"87: Recommended but not administered, treatment refused by patient, patient's family member or guardian","RX_SUMM_TRNSPLNT_ENDO"
-88,,"88: Hematologic transplant and/or endocrine surgery/radiation recommended, unknown if administered","RX_SUMM_TRNSPLNT_ENDO"
-99,,"99: Unknown if recommended or administered","RX_SUMM_TRNSPLNT_ENDO"
-0,,"0: None","RX_SUMM_OTHER"
-1,,"1: Other","RX_SUMM_OTHER"
-2,,"2: Other-Experimental","RX_SUMM_OTHER"
-3,,"3: Other-Double Blind","RX_SUMM_OTHER"
-6,,"6: Other-Unproven","RX_SUMM_OTHER"
-7,,"7: Treatment 1, 2 or 3 recommended but refused by patient, patient's family or guardian","RX_SUMM_OTHER"
-8,,"8: Recommended unknown if administered","RX_SUMM_OTHER"
-9,,"9: Unknown if recommended or adminstered","RX_SUMM_OTHER"
-0,,"0: None","RX_HOSP_OTHER"
-1,,"1: Other","RX_HOSP_OTHER"
-2,,"2: Other-Experimental","RX_HOSP_OTHER"
-3,,"3: Other-Double Blind","RX_HOSP_OTHER"
-6,,"6: Other-Unproven","RX_HOSP_OTHER"
-7,,"7: Treatment 1, 2 or 3 recommended but refused by patient, patient's family or guardian","RX_HOSP_OTHER"
-8,,"8: Recommended unknown if administered","RX_HOSP_OTHER"
-9,,"9: Unknown if recommended or adminstered","RX_HOSP_OTHER"
-0,,"0: None","PALLIATIVE_CARE"
-1,,"1: Surgery","PALLIATIVE_CARE"
-2,,"2: Radiation therapy","PALLIATIVE_CARE"
-3,,"3: Chemo, hormone, other systemic drugs","PALLIATIVE_CARE"
-4,,"4: Pain management therapy with no other palliative care","PALLIATIVE_CARE"
-5,,"5: Any combination of codes 1, 2, and/or 3 without code 4","PALLIATIVE_CARE"
-6,,"6: Any combination of codes 1, 2, and/or 3 with code 4","PALLIATIVE_CARE"
-7,,"7: Palliative care performed or referred, type unknown or other than codes 1-6","PALLIATIVE_CARE"
-9,,"9: Unknown if palliative care performed or referred","PALLIATIVE_CARE"
-0,,"0: No systemic therapy and/or no surgery","RX_SUMM_SYSTEMIC_SUR_SEQ"
-2,,"2: Systemic therapy before surgery","RX_SUMM_SYSTEMIC_SUR_SEQ"
-3,,"3: Systemic therapy after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ"
-4,,"4: Systemic therapy before and after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ"
-5,,"5: Intraoperative systemic therapy during surgical procedure","RX_SUMM_SYSTEMIC_SUR_SEQ"
-6,,"6: Intraoperative systemic therapy with other Rx administered before or after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ"
-9,,"9: Sequence unknown","RX_SUMM_SYSTEMIC_SUR_SEQ"
-0,,"0: No Treatment Given","RX_SUMM_TREATMENT_STATUS"
-1,,"1: Treatment Given","RX_SUMM_TREATMENT_STATUS"
-2,,"2: Active Surveillance","RX_SUMM_TREATMENT_STATUS"
-9,,"9: Unknown if Treatment Given","RX_SUMM_TREATMENT_STATUS"
-0,,"0: Patient alive, or died more than 30 days after surgery performed","PUF_30_DAY_MORT_CD"
-1,,"1: Patient died 30 or fewer days after surgery performed","PUF_30_DAY_MORT_CD"
-9,,"9: Patient alive with fewer than 30 days of follow-up, surgery date missing, or last contact date missing","PUF_30_DAY_MORT_CD"
-0,,"0: Patient alive, or died more than 90 days after surgery performed","PUF_90_DAY_MORT_CD"
-1,,"1: Patient died 90 or fewer days after surgery performed","PUF_90_DAY_MORT_CD"
-9,,"9: Patient alive with fewer than 90 days of follow-up, surgery date missing, or last contact date missing","PUF_90_DAY_MORT_CD"
-0,,"0: Dead","PUF_VITAL_STATUS"
-1,,"1: Alive","PUF_VITAL_STATUS"
-0,,"0: Only one facility reported this case to NCDB","PUF_MULT_SOURCE"
-1,,"1: Records pertaining to this case submitted to NCDB by more than one facility","PUF_MULT_SOURCE"
-0,,"Diagnosis date before reference date","REFERENCE_DATE_FLAG"
-1,,"Diagonsis date on or after reference date","REFERENCE_DATE_FLAG"
-0,,"None, No regional lymph node surgery No lymph nodes found in the pathologic specimen","RX_SUMM_SCOPE_REG_LN_2012"
-1,,"Biopsy or aspiration of regional lymph node, NOS","RX_SUMM_SCOPE_REG_LN_2012"
-2,,"Sentinel lymph node biopsy","RX_SUMM_SCOPE_REG_LN_2012"
-3,,"Number of regional nodes removed unknown or not stated, regional lymph nodes removed, NOS","RX_SUMM_SCOPE_REG_LN_2012"
-4,,"1-3 regional lymph nodes removed","RX_SUMM_SCOPE_REG_LN_2012"
-5,,"4 or more regional lymph nodes removed","RX_SUMM_SCOPE_REG_LN_2012"
-6,,"Sentinel node biopsy & code 3, 4, or 5 at same time, or timing not stated","RX_SUMM_SCOPE_REG_LN_2012"
-7,,"Sentinel node biopsy and code 3, 4, or 5 at different times","RX_SUMM_SCOPE_REG_LN_2012"
-9,,"Unknown or not applicable","RX_SUMM_SCOPE_REG_LN_2012"
-0,,"No surgical diagnostic or staging procedure was performed","RX_HOSP_DXSTG_PROC"
-1,,"A biopsy was done to a site other than the primary","RX_HOSP_DXSTG_PROC"
-2,,"A biopsy (incisional, needle, or aspiration) was done to the primary site","RX_HOSP_DXSTG_PROC"
-3,,"A surgical exploration only","RX_HOSP_DXSTG_PROC"
-4,,"A surgical procedure with a bypass was performed, but no biopsy was done","RX_HOSP_DXSTG_PROC"
-5,,"An exploratory procedure was performed, and a biopsy of either the primary site or another site was done","RX_HOSP_DXSTG_PROC"
-6,,"A bypass procedure was performed, and a biopsy of either the primary site or another site was done","RX_HOSP_DXSTG_PROC"
-7,,"A procedure was done, but the type of procedure is unknown","RX_HOSP_DXSTG_PROC"
-9,,"No information of whether a diagnostic or staging procedure was performed","RX_HOSP_DXSTG_PROC"
-0,,"None","PALLIATIVE_CARE_HOSP"
-1,,"Surgery","PALLIATIVE_CARE_HOSP"
-2,,"Radiation therapy","PALLIATIVE_CARE_HOSP"
-3,,"Chemo, hormone, other systemic drugs","PALLIATIVE_CARE_HOSP"
-4,,"Pain management therapy with no other palliative care","PALLIATIVE_CARE_HOSP"
-5,,"Any combination of codes 1, 2, and/or 3 without code 4","PALLIATIVE_CARE_HOSP"
-6,,"Any combination of codes 1, 2, and/or 3 with code 4","PALLIATIVE_CARE_HOSP"
-7,,"Palliative care performed or referred, type unknown or other than codes 1-6","PALLIATIVE_CARE_HOSP"
-9,,"Unknown if palliative care performed or referred","PALLIATIVE_CARE_HOSP"
+"code","relabel","label","varname","var_rename"
+1,,"1: Community Cancer Program","FACILITY_TYPE_CD",
+2,,"2: Comprehensive Community Cancer Program","FACILITY_TYPE_CD",
+3,,"3: Academic/Research Program","FACILITY_TYPE_CD",
+4,,"4: Integrated Network Cancer Program","FACILITY_TYPE_CD",
+9,,"9: Other specified types of cancer programs","FACILITY_TYPE_CD",
+1,,"1: New England","FACILITY_LOCATION_CD",
+2,,"2: Middle Atlantic","FACILITY_LOCATION_CD",
+3,,"3: South Atlantic","FACILITY_LOCATION_CD",
+4,,"4: East North Central","FACILITY_LOCATION_CD",
+5,,"5: East South Central","FACILITY_LOCATION_CD",
+6,,"6: West North Central","FACILITY_LOCATION_CD",
+7,,"7: West South Central","FACILITY_LOCATION_CD",
+8,,"8: Mountain","FACILITY_LOCATION_CD",
+9,,"9: Pacific","FACILITY_LOCATION_CD",
+0,,"0: Out of US","FACILITY_LOCATION_CD",
+1,"White","1: White","RACE",
+2,"Black","2: Black","RACE",
+3,"Other","3: American Indian, Aleutian, or Eskimo","RACE",
+4,"Other","4: Chinese","RACE",
+5,"Other","5: Japanese","RACE",
+6,"Other","6: Filipino","RACE",
+7,"Other","7: Hawaiian","RACE",
+8,"Other","8: Korean","RACE",
+10,"Other","10: Vietnamese","RACE",
+11,"Other","11: Laotian","RACE",
+12,"Other","12: Hmong","RACE",
+13,"Other","13: Kampuchean","RACE",
+14,"Other","14: Thai","RACE",
+15,"Other","15: Asian Indian or Pakistani","RACE",
+16,"Other","16: Asian Indian","RACE",
+17,"Other","17: Pakistani","RACE",
+20,"Other","20: Micronesian, NOS","RACE",
+21,"Other","21: Chamorran","RACE",
+22,"Other","22: Guamanian, NOS","RACE",
+25,"Other","25: Polynesian, NOS","RACE",
+26,"Other","26: Tahitian","RACE",
+27,"Other","27: Samoan","RACE",
+28,"Other","28: Tongan","RACE",
+30,"Other","30: Melanesian, NOS","RACE",
+31,"Other","31: Fiji Islander","RACE",
+32,"Other","32: New Guinean","RACE",
+96,"Other","96: Other Asian, including Asian, NOS and Oriental, NOS","RACE",
+97,"Other","97: Pacific Islander, NOS","RACE",
+98,"Other","98: Other","RACE",
+99,"Unknown","99: Unknown","RACE",
+1,,"1: Male","SEX",
+2,,"2: Female","SEX",
+3,,"3: Other/Hermaphrodite","SEX",
+4,,"4: Transsexual","SEX",
+9,,"9: Not stated in patient record","SEX",
+0,,"0: Not Insured","INSURANCE_STATUS",
+1,,"1: Private Insurance","INSURANCE_STATUS",
+2,,"2: Medicaid","INSURANCE_STATUS",
+3,,"3: Medicare","INSURANCE_STATUS",
+4,,"4: Other Government","INSURANCE_STATUS",
+9,,"9: Insurance Status Unknown","INSURANCE_STATUS",
+0,"non-Hispanic","0: Non-Spanish; non-Hispanic","SPANISH_HISPANIC_ORIGIN","hsp"
+1,"Hispanic","1: Mexican/Chicano","SPANISH_HISPANIC_ORIGIN","hsp"
+2,"Hispanic","2: Puerto Rican","SPANISH_HISPANIC_ORIGIN","hsp"
+3,"Hispanic","3: Cuban","SPANISH_HISPANIC_ORIGIN","hsp"
+4,"Hispanic","4: South or Central America","SPANISH_HISPANIC_ORIGIN","hsp"
+5,"Hispanic","5: Other specified Spanish/Hispanic origin","SPANISH_HISPANIC_ORIGIN","hsp"
+6,"Hispanic","6: Spanish, NOS Hispanic, NOS Latino, NOS","SPANISH_HISPANIC_ORIGIN","hsp"
+7,"Hispanic","7: Spanish surname only","SPANISH_HISPANIC_ORIGIN","hsp"
+8,"Hispanic","8: Dominican Republic","SPANISH_HISPANIC_ORIGIN","hsp"
+9,"Unknown","9: Unknown","SPANISH_HISPANIC_ORIGIN","hsp"
+1,,"< $30,000","MED_INC_QUAR_00",
+2,,"$30,000 - $35,999","MED_INC_QUAR_00",
+3,,"$36,000 - $45,999","MED_INC_QUAR_00",
+4,,"$46,000 +","MED_INC_QUAR_00",
+1,,">=29%","NO_HSD_QUAR_00",
+2,,"20% - 28.9%","NO_HSD_QUAR_00",
+3,,"14% - 19.9%","NO_HSD_QUAR_00",
+4,,"<14%","NO_HSD_QUAR_00",
+1,,"1: Counties in metro areas of 1 million population or more","UR_CD_03",
+2,,"2: Counties in metro areas of 250,000 to 1 million population","UR_CD_03",
+3,,"3: Counties in metro areas of fewer than 250,000 population","UR_CD_03",
+4,,"4: Urban population of 20,000 or more adjacent to a metro area","UR_CD_03",
+5,,"5: Urban population of 20,000 or more not adjacent to a metro area","UR_CD_03",
+6,,"6: Urban population of 2,500 to 19,999, adjacent to a metro area","UR_CD_03",
+7,,"7: Urban population of 2,500 to 19,999, not adjacent to a metro area","UR_CD_03",
+8,,"8: Completely rural or less than 2,500 urban population, adjacent to a metro area","UR_CD_03",
+9,,"9: Completely rural or less than 2,500 urban population, not adjacent to a metro area","UR_CD_03",
+1,,"< $38,000","MED_INC_QUAR_12",
+2,,"$38,000 - $47,999","MED_INC_QUAR_12",
+3,,"$48,000 - $62,999","MED_INC_QUAR_12",
+4,,"$63,000 +","MED_INC_QUAR_12",
+1,,">=21%","NO_HSD_QUAR_12",
+2,,"13% - 20.9%","NO_HSD_QUAR_12",
+3,,"7% - 12.9%","NO_HSD_QUAR_12",
+4,,"<7","NO_HSD_QUAR_12",
+1,,"1: Counties in metro areas of 1 million population or more","UR_CD_13",
+2,,"2: Counties in metro areas of 250,000 to 1 million population","UR_CD_13",
+3,,"3: Counties in metro areas of fewer than 250,000 population","UR_CD_13",
+4,,"4: Urban population of 20,000 or more adjacent to a metro area","UR_CD_13",
+5,,"5: Urban population of 20,000 or more not adjacent to a metro area","UR_CD_13",
+6,,"6: Urban population of 2,500 to 19,999, adjacent to a metro area","UR_CD_13",
+7,,"7: Urban population of 2,500 to 19,999, not adjacent to a metro area","UR_CD_13",
+8,,"8: Completely rural or less than 2,500 urban population, adjacent to a metro area","UR_CD_13",
+9,,"9: Completely rural or less than 2,500 urban population, not adjacent to a metro area","UR_CD_13",
+0,,"0: Dx at reporting facility, all treatment decisions done elsewhere","CLASS_OF_CASE",
+10,,"10: Dx and part or all of 1st course treatment or a decision not to treat was at the reporting facility, NOS","CLASS_OF_CASE",
+11,,"11: Dx in staff physician's office and part of 1st course treatment at the reporting facility","CLASS_OF_CASE",
+12,,"12: Dx in a staff physician's office and all of 1st course treatment at the reporting facility","CLASS_OF_CASE",
+13,,"13: Dx and part of first course Rx at reporting facility, part of first course treatment elsewhere","CLASS_OF_CASE",
+14,,"14: Dx at reporting facility and all first course treatment at the reporting facility","CLASS_OF_CASE",
+20,,"20: Dx elsewhere and all or part of 1st course treatment or a decision not to treat at the reporting facility, NOS","CLASS_OF_CASE",
+21,,"21: Dx elsewhere and part of 1st course treatment at the reporting facility part of first course treatment elsewhere","CLASS_OF_CASE",
+22,,"22: Dx elsewhere and all of first course treatment or a decision not to treat at the reporting facility","CLASS_OF_CASE",
+0,,"0: Organ is not considered to be a paired site","LATERALITY",
+1,,"1: Origin of primary is right","LATERALITY",
+2,,"2: Origin of primary is left","LATERALITY",
+3,,"3: Only one side involved, right or left origin not specified","LATERALITY",
+4,,"4: Bilateral involvement","LATERALITY",
+5,,"5: Paired site midline tumor","LATERALITY",
+9,,"9: Paired site, but lateral origin unknown, midline tumor","LATERALITY",
+0,,"0: Benign","BEHAVIOR",
+1,,"1: Borderline","BEHAVIOR",
+2,,"2: In situ and/or carcinoma in situ","BEHAVIOR",
+3,,"3: Invasive","BEHAVIOR",
+1,,"1: Well differentiated, differentiated, NOS","GRADE",
+2,,"2: Moderately differentiated, moderately well differentiated, intermediate differentiation","GRADE",
+3,,"3: Poorly differentiated","GRADE",
+4,,"4: Undifferentiated, anaplastic","GRADE",
+5,,"5: T cell T-precursor","GRADE",
+6,,"6: B cell, pre-B, B-precursor","GRADE",
+7,,"7: Null cell non T-non B","GRADE",
+8,,"8: NK (natural killer) cell","GRADE",
+9,,"9: Cell type not determined, not stated or not applicable, unknown primaries, high grade dysplasia","GRADE",
+0,,"0: All nodes examined are negative","REGIONAL_NODES_POSITIVE",
+90,,"90: 90 or more nodes are positive","REGIONAL_NODES_POSITIVE",
+95,,"95: Positive aspiration of lymph node(s) was performed","REGIONAL_NODES_POSITIVE",
+97,,"97: Positive nodes are documented, but the number is unspecified","REGIONAL_NODES_POSITIVE",
+98,,"98: No nodes were examined","REGIONAL_NODES_POSITIVE",
+99,,"99: Unknown whether nodes are positive, not applicable, not stated in patient record","REGIONAL_NODES_POSITIVE",
+0,,"0: No nodes were examined","REGIONAL_NODES_EXAMINED",
+90,,"90: 90 or more nodes were examined","REGIONAL_NODES_EXAMINED",
+95,,"95: No regional nodes were removed, but aspiration of regional nodes was performed","REGIONAL_NODES_EXAMINED",
+96,,"96: Regional lymph node removal was documented as a sampling, and the number of nodes is unknown/not stated","REGIONAL_NODES_EXAMINED",
+97,,"97: Regional lymph node removal was documented as a dissection, and the number of nodes is unknown/not stated","REGIONAL_NODES_EXAMINED",
+98,,"98: Regional lymph nodes surgically removed but number not documented, not documented as sampling or dissection","REGIONAL_NODES_EXAMINED",
+99,,"99: Unknown if regional nodes examined, not applicable for this site-histology combination","REGIONAL_NODES_EXAMINED",
+0,,"0: No surgical diagnostic or staging procedure was performed","RX_SUMM_DXSTG_PROC",
+1,,"1: A biopsy was done to a site other than the primary","RX_SUMM_DXSTG_PROC",
+2,,"2: A biopsy (incisional, needle, or aspiration) was done to the primary site","RX_SUMM_DXSTG_PROC",
+3,,"3: A surgical exploration only","RX_SUMM_DXSTG_PROC",
+4,,"4: A surgical procedure with a bypass was performed, but no biopsy was done","RX_SUMM_DXSTG_PROC",
+5,,"5: An exploratory procedure was performed, and a biopsy of either the primary site or another site was done","RX_SUMM_DXSTG_PROC",
+6,,"6: A bypass procedure was performed, and a biopsy of either the primary site or another site was done","RX_SUMM_DXSTG_PROC",
+7,,"7: A procedure was done, but the type of procedure is unknown","RX_SUMM_DXSTG_PROC",
+9,,"9: No information of whether a diagnostic or staging procedure was performed","RX_SUMM_DXSTG_PROC",
+0,,"0: Not staged(cases that have AJCC staging scheme and staging was not done)","TNM_EDITION_NUMBER",
+5,,"5: Fifth Edition","TNM_EDITION_NUMBER",
+6,,"6: Sixth Edition","TNM_EDITION_NUMBER",
+7,,"7: Seventh Edition","TNM_EDITION_NUMBER",
+88,,"88: Not applicable (cases that do not have an AJCC staging scheme)","TNM_EDITION_NUMBER",
+99,,"99: Staged, but the edition is unknown, Prior to the 5th edition","TNM_EDITION_NUMBER",
+0,,"0: Stage 0","ANALYTIC_STAGE_GROUP",
+1,,"1: Stage I","ANALYTIC_STAGE_GROUP",
+2,,"2: Stage II","ANALYTIC_STAGE_GROUP",
+3,,"3: Stage III","ANALYTIC_STAGE_GROUP",
+4,,"4: Stage IV","ANALYTIC_STAGE_GROUP",
+5,,"5: Occult (lung only)","ANALYTIC_STAGE_GROUP",
+8,,"8: AJCC Staging not applicable","ANALYTIC_STAGE_GROUP",
+9,,"9: AJCC Stage Group unknown","ANALYTIC_STAGE_GROUP",
+0,,"0: None","CS_METS_DX_BONE",
+1,,"1: Yes","CS_METS_DX_BONE",
+8,,"8: Not Applicable","CS_METS_DX_BONE",
+9,,"9: Unknown","CS_METS_DX_BONE",
+0,,"0: None","CS_METS_DX_BRAIN",
+1,,"1: Yes","CS_METS_DX_BRAIN",
+8,,"8: Not Applicable","CS_METS_DX_BRAIN",
+9,,"9: Unknown","CS_METS_DX_BRAIN",
+0,,"0: None","CS_METS_DX_LIVER",
+1,,"1: Yes","CS_METS_DX_LIVER",
+8,,"8: Not Applicable","CS_METS_DX_LIVER",
+9,,"9: Unknown","CS_METS_DX_LIVER",
+0,,"0: None","CS_METS_DX_LUNG",
+1,,"1: Yes","CS_METS_DX_LUNG",
+8,,"8: Not Applicable","CS_METS_DX_LUNG",
+9,,"9: Unknown","CS_METS_DX_LUNG",
+0,,"0: Not present","LYMPH_VASCULAR_INVASION",
+1,,"1: Present","LYMPH_VASCULAR_INVASION",
+8,,"8: Not applicable","LYMPH_VASCULAR_INVASION",
+9,,"9: Unknown","LYMPH_VASCULAR_INVASION",
+0,,"0: No surgical procedure of primary site","RX_HOSP_SURG_APPR_2010",
+1,,"1: Robotic assisted","RX_HOSP_SURG_APPR_2010",
+2,,"2: Robotic converted to open","RX_HOSP_SURG_APPR_2010",
+3,,"3: Laparoscopic","RX_HOSP_SURG_APPR_2010",
+4,,"4: Laparoscopic converted to open","RX_HOSP_SURG_APPR_2010",
+5,,"5: Open or approach unspecified","RX_HOSP_SURG_APPR_2010",
+9,,"9: Unknown if surgery performed","RX_HOSP_SURG_APPR_2010",
+0,,"0: No residual tumor All margins are grossly and microscopically negative","RX_SUMM_SURGICAL_MARGINS",
+1,,"1: Residual tumor, NOS  Involvement is indicated, but not otherwise specified","RX_SUMM_SURGICAL_MARGINS",
+2,,"2: Microscopic residual tumor Cannot be seen by the naked eye","RX_SUMM_SURGICAL_MARGINS",
+3,,"3: Macroscopic residual tumor, Gross tumor of the primary site which is visible to the naked eye","RX_SUMM_SURGICAL_MARGINS",
+7,,"7: Margins not evaluable, Cannot be assessed (indeterminate)","RX_SUMM_SURGICAL_MARGINS",
+8,,"8: No primary site surgery, No surgical procedure of the primary site Diagnosed at autopsy","RX_SUMM_SURGICAL_MARGINS",
+9,,"9: Unknown or not applicable","RX_SUMM_SURGICAL_MARGINS",
+0,,"0: No regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR",
+1,,"1: Regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR",
+9,,"9: Unknown if there was any regional lymph node surgery","RX_SUMM_SCOPE_REG_LN_SUR",
+0,,"0: None","RX_SUMM_SURG_OTH_REGDIS",
+1,,"1: Nonprimary surgical procedure performed","RX_SUMM_SURG_OTH_REGDIS",
+2,,"2: Nonprimary surgical procedure to other regional sites","RX_SUMM_SURG_OTH_REGDIS",
+3,,"3: Nonprimary surgical procedure to distant lymph node(s)","RX_SUMM_SURG_OTH_REGDIS",
+4,,"4: Nonprimary surgical procedure to distant site","RX_SUMM_SURG_OTH_REGDIS",
+5,,"5: Combination of codes","RX_SUMM_SURG_OTH_REGDIS",
+9,,"9: Unknown","RX_SUMM_SURG_OTH_REGDIS",
+0,,"0: No surgical procedure of the primary site was performed, or patient not readmitted","READM_HOSP_30_DAYS",
+1,,"1: Unplanned readmission within 30 days of discharge","READM_HOSP_30_DAYS",
+2,,"2: Planned readmission within 30 days of discharge","READM_HOSP_30_DAYS",
+3,,"3: Planned and unplanned readmission within 30 days of discharge","READM_HOSP_30_DAYS",
+9,,"9: Unknown if surgery recommended/performed, unknown if readmitted within 30 days of discharge","READM_HOSP_30_DAYS",
+0,,"0: Surgery of the primary site was performed","REASON_FOR_NO_SURGERY",
+1,,"1: Surgery not performed because it was not part of the planned first course treatment","REASON_FOR_NO_SURGERY",
+2,,"2: Surgery was not recommended/performed, contraindicated due to patient risk factors","REASON_FOR_NO_SURGERY",
+5,,"5: Surgery not performed because the patient died prior to planned or recommended surgery","REASON_FOR_NO_SURGERY",
+6,,"6: Surgery was recommeded by physician but not performed, No reason was noted in patient record","REASON_FOR_NO_SURGERY",
+7,,"7: Surgery was recommended but was refused by the patient, patient's family member or guardian","REASON_FOR_NO_SURGERY",
+8,,"8: Surgery was recommended, but unknown if performed","REASON_FOR_NO_SURGERY",
+9,,"9: Unknown if surgery was recommended or performed, Diagnosed at autopsy or death certificate only","REASON_FOR_NO_SURGERY",
+0,,"0: None","RX_SUMM_RADIATION",
+1,,"1: Beam radiation","RX_SUMM_RADIATION",
+2,,"2: Radioactive implants","RX_SUMM_RADIATION",
+3,,"3: Radioisotopes","RX_SUMM_RADIATION",
+4,,"4: Combination of beam radiation with radioactive implants or radioisotopes","RX_SUMM_RADIATION",
+5,,"5: Radiation therapy, NOS","RX_SUMM_RADIATION",
+9,,"9: Unknown","RX_SUMM_RADIATION",
+0,,"0: No radiation therapy administered","RAD_LOCATION_OF_RX",
+1,,"1: All radiation treatment at this facility","RAD_LOCATION_OF_RX",
+2,,"2: Regional treatment at this facility, boost elsewhere","RAD_LOCATION_OF_RX",
+3,,"3: Boost radiation at this facility, regional elsewhere","RAD_LOCATION_OF_RX",
+4,,"4: All radiation treatment elsewhere","RAD_LOCATION_OF_RX",
+8,,"8: Other","RAD_LOCATION_OF_RX",
+9,,"9: Unknown","RAD_LOCATION_OF_RX",
+0,,"0: No radiation treatment","RAD_TREAT_VOL",
+1,,"1: Eye/Orbit","RAD_TREAT_VOL",
+2,,"2: Pituitary","RAD_TREAT_VOL",
+3,,"3: Brain (NOS)","RAD_TREAT_VOL",
+4,,"4: Brain (limited)","RAD_TREAT_VOL",
+5,,"5: Head and neck (NOS)","RAD_TREAT_VOL",
+6,,"6: Head and neck (limited)","RAD_TREAT_VOL",
+7,,"7: Glottis","RAD_TREAT_VOL",
+8,,"8: Sinuses","RAD_TREAT_VOL",
+9,,"9: Parotid","RAD_TREAT_VOL",
+10,,"10: Chest/Lung (NOS)","RAD_TREAT_VOL",
+11,,"11: Lung (limited)","RAD_TREAT_VOL",
+12,,"12: Esophagus","RAD_TREAT_VOL",
+13,,"13: Stomach","RAD_TREAT_VOL",
+14,,"14: Liver","RAD_TREAT_VOL",
+15,,"15: Pancreas","RAD_TREAT_VOL",
+16,,"16: Kidney","RAD_TREAT_VOL",
+17,,"17: Abdomen (NOS)","RAD_TREAT_VOL",
+18,,"18: Breast","RAD_TREAT_VOL",
+19,,"19: Breast/Lymph nodes","RAD_TREAT_VOL",
+20,,"20: Chest wall","RAD_TREAT_VOL",
+21,,"21: Chest wall/Lymph nodes","RAD_TREAT_VOL",
+22,,"22: Mantle, Mini-mantle","RAD_TREAT_VOL",
+23,,"23: Lower extended field","RAD_TREAT_VOL",
+24,,"24: Spine","RAD_TREAT_VOL",
+25,,"25: Skull","RAD_TREAT_VOL",
+26,,"26: Ribs","RAD_TREAT_VOL",
+27,,"27: Hip","RAD_TREAT_VOL",
+28,,"28: Pelvic bones","RAD_TREAT_VOL",
+29,,"29: Pelvis (NOS)","RAD_TREAT_VOL",
+30,,"30: Skin","RAD_TREAT_VOL",
+31,,"31: Soft tissue","RAD_TREAT_VOL",
+32,,"32: Hemibody","RAD_TREAT_VOL",
+33,,"33: Whole body","RAD_TREAT_VOL",
+34,,"34: Bladder and pelvis","RAD_TREAT_VOL",
+35,,"35: Prostate and pelvis","RAD_TREAT_VOL",
+36,,"36: Uterus and cervix","RAD_TREAT_VOL",
+37,,"37: Shoulder","RAD_TREAT_VOL",
+38,,"38: Extremity bone, NOS","RAD_TREAT_VOL",
+39,,"39: Inverted Y","RAD_TREAT_VOL",
+40,,"40: Spinal cord","RAD_TREAT_VOL",
+41,,"41: Prostate","RAD_TREAT_VOL",
+50,,"50: Thyroid","RAD_TREAT_VOL",
+60,,"60: Lymph node region, NOS","RAD_TREAT_VOL",
+98,,"98: Other","RAD_TREAT_VOL",
+99,,"99: Unknown","RAD_TREAT_VOL",
+0,,"0: No radiation treatment","RAD_REGIONAL_RX_MODALITY",
+20,,"20: External beam, NOS","RAD_REGIONAL_RX_MODALITY",
+21,,"21: Orthovoltage","RAD_REGIONAL_RX_MODALITY",
+22,,"22: Cobalt-60, Cesium-137","RAD_REGIONAL_RX_MODALITY",
+23,,"23: Photons (2-5 MV)","RAD_REGIONAL_RX_MODALITY",
+24,,"24: Photons (6-10 MV)","RAD_REGIONAL_RX_MODALITY",
+25,,"25: Photons (11-19 MV)","RAD_REGIONAL_RX_MODALITY",
+26,,"26: Photons (>19 MV)","RAD_REGIONAL_RX_MODALITY",
+27,,"27: Photons (mixed energies)","RAD_REGIONAL_RX_MODALITY",
+28,,"28: Electrons","RAD_REGIONAL_RX_MODALITY",
+29,,"29: Photons and electrons mixed","RAD_REGIONAL_RX_MODALITY",
+30,,"30: Neutrons, with or without photons/electrons","RAD_REGIONAL_RX_MODALITY",
+31,,"31: IMRT","RAD_REGIONAL_RX_MODALITY",
+32,,"32: Conformal or 3-D therapy","RAD_REGIONAL_RX_MODALITY",
+40,,"40: Protons","RAD_REGIONAL_RX_MODALITY",
+41,,"41: Stereotactic radiosurgery, NOS","RAD_REGIONAL_RX_MODALITY",
+42,,"42: Linac radiosurgery","RAD_REGIONAL_RX_MODALITY",
+43,,"43: Gamma Knife","RAD_REGIONAL_RX_MODALITY",
+50,,"50: Brachytherapy, NOS","RAD_REGIONAL_RX_MODALITY",
+51,,"51: Brachytherapy, Intracavitary, LDR","RAD_REGIONAL_RX_MODALITY",
+52,,"52: Brachytherapy, Intracavitary, HDR","RAD_REGIONAL_RX_MODALITY",
+53,,"53: Brachytherapy, Interstitial, LDR","RAD_REGIONAL_RX_MODALITY",
+54,,"54: Brachytherapy, Interstitial, HDR","RAD_REGIONAL_RX_MODALITY",
+55,,"55: Radium","RAD_REGIONAL_RX_MODALITY",
+60,,"60: Radioisotopes, NOS","RAD_REGIONAL_RX_MODALITY",
+61,,"61: Strontium-89","RAD_REGIONAL_RX_MODALITY",
+62,,"62: Strontium-90","RAD_REGIONAL_RX_MODALITY",
+80,,"80: Combination modality, specified","RAD_REGIONAL_RX_MODALITY",
+85,,"85: Combination modality, NOS","RAD_REGIONAL_RX_MODALITY",
+98,,"98: Other, NOS","RAD_REGIONAL_RX_MODALITY",
+99,,"99: Unknown","RAD_REGIONAL_RX_MODALITY",
+0,,"0: No radiation treatment","RAD_BOOST_RX_MODALITY",
+20,,"20: External beam, NOS","RAD_BOOST_RX_MODALITY",
+21,,"21: Orthovoltage","RAD_BOOST_RX_MODALITY",
+22,,"22: Cobalt-60, Cesium-137","RAD_BOOST_RX_MODALITY",
+23,,"23: Photons (2-5 MV)","RAD_BOOST_RX_MODALITY",
+24,,"24: Photons (6-10 MV)","RAD_BOOST_RX_MODALITY",
+25,,"25: Photons (11-19 MV)","RAD_BOOST_RX_MODALITY",
+26,,"26: Photons (>19 MV)","RAD_BOOST_RX_MODALITY",
+27,,"27: Photons (mixed energies)","RAD_BOOST_RX_MODALITY",
+28,,"28: Electrons","RAD_BOOST_RX_MODALITY",
+29,,"29: Photons and electrons mixed","RAD_BOOST_RX_MODALITY",
+30,,"30: Neutrons, with or without photons/electrons","RAD_BOOST_RX_MODALITY",
+31,,"31: IMRT","RAD_BOOST_RX_MODALITY",
+32,,"32: Conformal or 3-D therapy","RAD_BOOST_RX_MODALITY",
+40,,"40: Protons","RAD_BOOST_RX_MODALITY",
+41,,"41: Stereotactic radiosurgery, NOS","RAD_BOOST_RX_MODALITY",
+42,,"42: Linac radiosurgery","RAD_BOOST_RX_MODALITY",
+43,,"43: Gamma Knife","RAD_BOOST_RX_MODALITY",
+50,,"50: Brachytherapy, NOS","RAD_BOOST_RX_MODALITY",
+51,,"51: Brachytherapy, Intracavitary, LDR","RAD_BOOST_RX_MODALITY",
+52,,"52: Brachytherapy, Intracavitary, HDR","RAD_BOOST_RX_MODALITY",
+53,,"53: Brachytherapy, Interstitial, LDR","RAD_BOOST_RX_MODALITY",
+54,,"54: Brachytherapy, Interstitial, HDR","RAD_BOOST_RX_MODALITY",
+55,,"55: Radium","RAD_BOOST_RX_MODALITY",
+60,,"60: Radioisotopes, NOS","RAD_BOOST_RX_MODALITY",
+61,,"61: Strontium-89","RAD_BOOST_RX_MODALITY",
+62,,"62: Strontium-90","RAD_BOOST_RX_MODALITY",
+98,,"98: Other, NOS","RAD_BOOST_RX_MODALITY",
+99,,"99: Unknown","RAD_BOOST_RX_MODALITY",
+0,,"Not administered","RAD_BOOST_DOSE_CGY",
+88888,,"Not applicable","RAD_BOOST_DOSE_CGY",
+99999,,"Unknown","RAD_BOOST_DOSE_CGY",
+0,,"0: No radiation therapy and/or surgical procedures","RX_SUMM_SURGRAD_SEQ",
+2,,"2: Radiation therapy before surgery","RX_SUMM_SURGRAD_SEQ",
+3,,"3: Radiation therapy after surgery","RX_SUMM_SURGRAD_SEQ",
+4,,"4: Radiation therapy both before and after surgery","RX_SUMM_SURGRAD_SEQ",
+5,,"5: Intraoperative radiation therapy","RX_SUMM_SURGRAD_SEQ",
+6,,"6: Intraoperative radiation therapy with other therapy administered before or after surgery","RX_SUMM_SURGRAD_SEQ",
+9,,"9: Sequence unknown","RX_SUMM_SURGRAD_SEQ",
+0,,"0: Radiation therapy was administered","REASON_FOR_NO_RADIATION",
+1,,"1: Radiation was not part of the planned first course treatment","REASON_FOR_NO_RADIATION",
+2,,"2: Radiation contraindicated due to other patient risk factors","REASON_FOR_NO_RADIATION",
+5,,"5: Patient died prior to planned or recommended therapy","REASON_FOR_NO_RADIATION",
+6,,"6: Radiation recommended but not administered, no reason was noted","REASON_FOR_NO_RADIATION",
+7,,"7: Radiation recommended but refused by the patient, patient's family member or guardian","REASON_FOR_NO_RADIATION",
+8,,"8: Radiation recommended, unknown whether administered","REASON_FOR_NO_RADIATION",
+9,,"9: Unknown if recommended or administered","REASON_FOR_NO_RADIATION",
+0,,"0: None","RX_SUMM_CHEMO",
+1,,"1: Chemotherapy administered, type and number of agents not documented","RX_SUMM_CHEMO",
+2,,"2: Single-agent chemotherapy","RX_SUMM_CHEMO",
+3,,"3: Multiagent chemotherapy","RX_SUMM_CHEMO",
+82,,"82: Chemotherapy not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_CHEMO",
+85,,"85: Chemotherapy not administered, patient died prior to planned or recommended therapy","RX_SUMM_CHEMO",
+86,,"86: Chemotherapy not administered, was recommended, not administered Reason unknown","RX_SUMM_CHEMO",
+87,,"87: Chemotherapy not administered, recommended, but refused by patient, patient's family member or guardian","RX_SUMM_CHEMO",
+88,,"88: Chemotherapy recommended, unknown if administered","RX_SUMM_CHEMO",
+99,,"99: Unknown if recommended or administered","RX_SUMM_CHEMO",
+0,,"0: None","RX_HOSP_CHEMO",
+1,,"1: Chemotherapy administered, type and number of agents not documented","RX_HOSP_CHEMO",
+2,,"2: Single-agent chemotherapy","RX_HOSP_CHEMO",
+3,,"3: Multiagent chemotherapy","RX_HOSP_CHEMO",
+82,,"82: Chemotherapy not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_CHEMO",
+85,,"85: Chemotherapy not administered, patient died prior to planned or recommended therapy","RX_HOSP_CHEMO",
+86,,"86: Chemotherapy not administered, was recommended, not administered Reason unknown","RX_HOSP_CHEMO",
+87,,"87: Chemotherapy not administered, recommended, but refused by patient, patient's family member or guardian","RX_HOSP_CHEMO",
+88,,"88: Chemotherapy recommended, unknown if administered","RX_HOSP_CHEMO",
+99,,"99: Unknown if recommended or administered","RX_HOSP_CHEMO",
+0,,"0: None","RX_SUMM_HORMONE",
+1,,"1: Hormone therapy administered as first course therapy","RX_SUMM_HORMONE",
+82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_HORMONE",
+85,,"85: Hormone therapy not administered, patient died prior to planned or recommended therapy","RX_SUMM_HORMONE",
+86,,"86: Recommended but not administered, no reason stated","RX_SUMM_HORMONE",
+87,,"87: Recommended, not administered, refused by patient, patient's family member or guardian","RX_SUMM_HORMONE",
+88,,"88: Hormone therapy recommended, unknown if administered","RX_SUMM_HORMONE",
+99,,"99: Unknown if recommended or administered","RX_SUMM_HORMONE",
+0,,"0: None","RX_HOSP_HORMONE",
+1,,"1: Hormone therapy administered as first course therapy","RX_HOSP_HORMONE",
+82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_HORMONE",
+85,,"85: Hormone therapy not administered, patient died prior to planned or recommended therapy","RX_HOSP_HORMONE",
+86,,"86: Recommended but not administered, no reason stated","RX_HOSP_HORMONE",
+87,,"87: Recommended, not administered, refused by patient, patient's family member or guardian","RX_HOSP_HORMONE",
+88,,"88: Hormone therapy recommended, unknown if administered","RX_HOSP_HORMONE",
+99,,"99: Unknown if recommended or administered","RX_HOSP_HORMONE",
+0,,"0: None","RX_SUMM_IMMUNOTHERAPY",
+1,,"1: Immunotherapy administered as first course therapy","RX_SUMM_IMMUNOTHERAPY",
+82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_IMMUNOTHERAPY",
+85,,"85: Not administered because the patient died prior to planned or recommended therapy","RX_SUMM_IMMUNOTHERAPY",
+86,,"86: Recommended, not administered, No reason given","RX_SUMM_IMMUNOTHERAPY",
+87,,"87: Recommended, not administered, refused by the patient, patient's family member or guardian","RX_SUMM_IMMUNOTHERAPY",
+88,,"88: Immunotherapy recommended, unknown if administered","RX_SUMM_IMMUNOTHERAPY",
+99,,"99: Unknown","RX_SUMM_IMMUNOTHERAPY",
+0,,"0: None","RX_HOSP_IMMUNOTHERAPY",
+1,,"1: Immunotherapy administered as first course therapy","RX_HOSP_IMMUNOTHERAPY",
+82,,"82: Not recommended/administered, contraindicated due to patient risk factors","RX_HOSP_IMMUNOTHERAPY",
+85,,"85: Not administered because the patient died prior to planned or recommended therapy","RX_HOSP_IMMUNOTHERAPY",
+86,,"86: Recommended, not administered, No reason given","RX_HOSP_IMMUNOTHERAPY",
+87,,"87: Recommended, not administered, refused by the patient, patient's family member or guardian","RX_HOSP_IMMUNOTHERAPY",
+88,,"88: Immunotherapy recommended, unknown if administered","RX_HOSP_IMMUNOTHERAPY",
+99,,"99: Unknown","RX_HOSP_IMMUNOTHERAPY",
+0,,"0: No transplant procedure or endocrine therapy administered","RX_SUMM_TRNSPLNT_ENDO",
+10,,"10: Bone marrow transplant procedure administered, type not specified","RX_SUMM_TRNSPLNT_ENDO",
+11,,"11: Bone marrow transplant, autologous","RX_SUMM_TRNSPLNT_ENDO",
+12,,"12: Bone marrow transplant, allogeneic","RX_SUMM_TRNSPLNT_ENDO",
+20,,"20: Stem cell harvest and infusion","RX_SUMM_TRNSPLNT_ENDO",
+30,,"30: Endocrine surgery and/or endocrine radiation therapy","RX_SUMM_TRNSPLNT_ENDO",
+40,,"40: Combination of endocrine surgery and/or radiation with a transplant procedure","RX_SUMM_TRNSPLNT_ENDO",
+82,,"82: Transplant/endocrine surgery/radiation not recommended/administered, contraindicated due to patient risk factors","RX_SUMM_TRNSPLNT_ENDO",
+85,,"85: Transplant/endocrine surgery/radiation not administered,patient died prior to planned or recommended therapy","RX_SUMM_TRNSPLNT_ENDO",
+86,,"86: Recommended Transplant/endocrine/surgery/radiation but not administered no reason given","RX_SUMM_TRNSPLNT_ENDO",
+87,,"87: Recommended but not administered, treatment refused by patient, patient's family member or guardian","RX_SUMM_TRNSPLNT_ENDO",
+88,,"88: Hematologic transplant and/or endocrine surgery/radiation recommended, unknown if administered","RX_SUMM_TRNSPLNT_ENDO",
+99,,"99: Unknown if recommended or administered","RX_SUMM_TRNSPLNT_ENDO",
+0,,"0: None","RX_SUMM_OTHER",
+1,,"1: Other","RX_SUMM_OTHER",
+2,,"2: Other-Experimental","RX_SUMM_OTHER",
+3,,"3: Other-Double Blind","RX_SUMM_OTHER",
+6,,"6: Other-Unproven","RX_SUMM_OTHER",
+7,,"7: Treatment 1, 2 or 3 recommended but refused by patient, patient's family or guardian","RX_SUMM_OTHER",
+8,,"8: Recommended unknown if administered","RX_SUMM_OTHER",
+9,,"9: Unknown if recommended or adminstered","RX_SUMM_OTHER",
+0,,"0: None","RX_HOSP_OTHER",
+1,,"1: Other","RX_HOSP_OTHER",
+2,,"2: Other-Experimental","RX_HOSP_OTHER",
+3,,"3: Other-Double Blind","RX_HOSP_OTHER",
+6,,"6: Other-Unproven","RX_HOSP_OTHER",
+7,,"7: Treatment 1, 2 or 3 recommended but refused by patient, patient's family or guardian","RX_HOSP_OTHER",
+8,,"8: Recommended unknown if administered","RX_HOSP_OTHER",
+9,,"9: Unknown if recommended or adminstered","RX_HOSP_OTHER",
+0,,"0: None","PALLIATIVE_CARE",
+1,,"1: Surgery","PALLIATIVE_CARE",
+2,,"2: Radiation therapy","PALLIATIVE_CARE",
+3,,"3: Chemo, hormone, other systemic drugs","PALLIATIVE_CARE",
+4,,"4: Pain management therapy with no other palliative care","PALLIATIVE_CARE",
+5,,"5: Any combination of codes 1, 2, and/or 3 without code 4","PALLIATIVE_CARE",
+6,,"6: Any combination of codes 1, 2, and/or 3 with code 4","PALLIATIVE_CARE",
+7,,"7: Palliative care performed or referred, type unknown or other than codes 1-6","PALLIATIVE_CARE",
+9,,"9: Unknown if palliative care performed or referred","PALLIATIVE_CARE",
+0,,"0: No systemic therapy and/or no surgery","RX_SUMM_SYSTEMIC_SUR_SEQ",
+2,,"2: Systemic therapy before surgery","RX_SUMM_SYSTEMIC_SUR_SEQ",
+3,,"3: Systemic therapy after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ",
+4,,"4: Systemic therapy before and after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ",
+5,,"5: Intraoperative systemic therapy during surgical procedure","RX_SUMM_SYSTEMIC_SUR_SEQ",
+6,,"6: Intraoperative systemic therapy with other Rx administered before or after surgery","RX_SUMM_SYSTEMIC_SUR_SEQ",
+9,,"9: Sequence unknown","RX_SUMM_SYSTEMIC_SUR_SEQ",
+0,,"0: No Treatment Given","RX_SUMM_TREATMENT_STATUS",
+1,,"1: Treatment Given","RX_SUMM_TREATMENT_STATUS",
+2,,"2: Active Surveillance","RX_SUMM_TREATMENT_STATUS",
+9,,"9: Unknown if Treatment Given","RX_SUMM_TREATMENT_STATUS",
+0,,"0: Patient alive, or died more than 30 days after surgery performed","PUF_30_DAY_MORT_CD",
+1,,"1: Patient died 30 or fewer days after surgery performed","PUF_30_DAY_MORT_CD",
+9,,"9: Patient alive with fewer than 30 days of follow-up, surgery date missing, or last contact date missing","PUF_30_DAY_MORT_CD",
+0,,"0: Patient alive, or died more than 90 days after surgery performed","PUF_90_DAY_MORT_CD",
+1,,"1: Patient died 90 or fewer days after surgery performed","PUF_90_DAY_MORT_CD",
+9,,"9: Patient alive with fewer than 90 days of follow-up, surgery date missing, or last contact date missing","PUF_90_DAY_MORT_CD",
+0,,"0: Dead","PUF_VITAL_STATUS",
+1,,"1: Alive","PUF_VITAL_STATUS",
+0,,"0: Only one facility reported this case to NCDB","PUF_MULT_SOURCE",
+1,,"1: Records pertaining to this case submitted to NCDB by more than one facility","PUF_MULT_SOURCE",
+0,,"Diagnosis date before reference date","REFERENCE_DATE_FLAG",
+1,,"Diagonsis date on or after reference date","REFERENCE_DATE_FLAG",
+0,,"None, No regional lymph node surgery No lymph nodes found in the pathologic specimen","RX_SUMM_SCOPE_REG_LN_2012",
+1,,"Biopsy or aspiration of regional lymph node, NOS","RX_SUMM_SCOPE_REG_LN_2012",
+2,,"Sentinel lymph node biopsy","RX_SUMM_SCOPE_REG_LN_2012",
+3,,"Number of regional nodes removed unknown or not stated, regional lymph nodes removed, NOS","RX_SUMM_SCOPE_REG_LN_2012",
+4,,"1-3 regional lymph nodes removed","RX_SUMM_SCOPE_REG_LN_2012",
+5,,"4 or more regional lymph nodes removed","RX_SUMM_SCOPE_REG_LN_2012",
+6,,"Sentinel node biopsy & code 3, 4, or 5 at same time, or timing not stated","RX_SUMM_SCOPE_REG_LN_2012",
+7,,"Sentinel node biopsy and code 3, 4, or 5 at different times","RX_SUMM_SCOPE_REG_LN_2012",
+9,,"Unknown or not applicable","RX_SUMM_SCOPE_REG_LN_2012",
+0,,"No surgical diagnostic or staging procedure was performed","RX_HOSP_DXSTG_PROC",
+1,,"A biopsy was done to a site other than the primary","RX_HOSP_DXSTG_PROC",
+2,,"A biopsy (incisional, needle, or aspiration) was done to the primary site","RX_HOSP_DXSTG_PROC",
+3,,"A surgical exploration only","RX_HOSP_DXSTG_PROC",
+4,,"A surgical procedure with a bypass was performed, but no biopsy was done","RX_HOSP_DXSTG_PROC",
+5,,"An exploratory procedure was performed, and a biopsy of either the primary site or another site was done","RX_HOSP_DXSTG_PROC",
+6,,"A bypass procedure was performed, and a biopsy of either the primary site or another site was done","RX_HOSP_DXSTG_PROC",
+7,,"A procedure was done, but the type of procedure is unknown","RX_HOSP_DXSTG_PROC",
+9,,"No information of whether a diagnostic or staging procedure was performed","RX_HOSP_DXSTG_PROC",
+0,,"None","PALLIATIVE_CARE_HOSP",
+1,,"Surgery","PALLIATIVE_CARE_HOSP",
+2,,"Radiation therapy","PALLIATIVE_CARE_HOSP",
+3,,"Chemo, hormone, other systemic drugs","PALLIATIVE_CARE_HOSP",
+4,,"Pain management therapy with no other palliative care","PALLIATIVE_CARE_HOSP",
+5,,"Any combination of codes 1, 2, and/or 3 without code 4","PALLIATIVE_CARE_HOSP",
+6,,"Any combination of codes 1, 2, and/or 3 with code 4","PALLIATIVE_CARE_HOSP",
+7,,"Palliative care performed or referred, type unknown or other than codes 1-6","PALLIATIVE_CARE_HOSP",
+9,,"Unknown if palliative care performed or referred","PALLIATIVE_CARE_HOSP",

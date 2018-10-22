@@ -69,7 +69,7 @@ dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.)
 #' Create dummy variables for univariate analysis of individual levels where
 #' applicable
 dat2 <- dummy.data.frame(dat1
-                         ,names=v(c_discrete)
+                         ,names=setdiff(v(c_discrete),v(c_nonanalytic))
                          ,omit.constants = F,dummy.classes = '',sep=':::');
 #' 
 #' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 

@@ -55,16 +55,16 @@
 3,,"3: Medicare","INSURANCE_STATUS",
 4,,"4: Other Government","INSURANCE_STATUS",
 9,,"9: Insurance Status Unknown","INSURANCE_STATUS",
-0,"non-Hispanic","0: Non-Spanish; non-Hispanic","SPANISH_HISPANIC_ORIGIN","hsp"
-1,"Hispanic","1: Mexican/Chicano","SPANISH_HISPANIC_ORIGIN","hsp"
-2,"Hispanic","2: Puerto Rican","SPANISH_HISPANIC_ORIGIN","hsp"
-3,"Hispanic","3: Cuban","SPANISH_HISPANIC_ORIGIN","hsp"
-4,"Hispanic","4: South or Central America","SPANISH_HISPANIC_ORIGIN","hsp"
-5,"Hispanic","5: Other specified Spanish/Hispanic origin","SPANISH_HISPANIC_ORIGIN","hsp"
-6,"Hispanic","6: Spanish, NOS Hispanic, NOS Latino, NOS","SPANISH_HISPANIC_ORIGIN","hsp"
-7,"Hispanic","7: Spanish surname only","SPANISH_HISPANIC_ORIGIN","hsp"
-8,"Hispanic","8: Dominican Republic","SPANISH_HISPANIC_ORIGIN","hsp"
-9,"Unknown","9: Unknown","SPANISH_HISPANIC_ORIGIN","hsp"
+0,"non-Hispanic","0: Non-Spanish; non-Hispanic","SPANISH_HISPANIC_ORIGIN","a_hsp"
+1,"Hispanic","1: Mexican/Chicano","SPANISH_HISPANIC_ORIGIN","a_hsp"
+2,"Hispanic","2: Puerto Rican","SPANISH_HISPANIC_ORIGIN","a_hsp"
+3,"Hispanic","3: Cuban","SPANISH_HISPANIC_ORIGIN","a_hsp"
+4,"Hispanic","4: South or Central America","SPANISH_HISPANIC_ORIGIN","a_hsp"
+5,"Hispanic","5: Other specified Spanish/Hispanic origin","SPANISH_HISPANIC_ORIGIN","a_hsp"
+6,"Hispanic","6: Spanish, NOS Hispanic, NOS Latino, NOS","SPANISH_HISPANIC_ORIGIN","a_hsp"
+7,"Hispanic","7: Spanish surname only","SPANISH_HISPANIC_ORIGIN","a_hsp"
+8,"Hispanic","8: Dominican Republic","SPANISH_HISPANIC_ORIGIN","a_hsp"
+9,"Unknown","9: Unknown","SPANISH_HISPANIC_ORIGIN","a_hsp"
 1,,"< $30,000","MED_INC_QUAR_00",
 2,,"$30,000 - $35,999","MED_INC_QUAR_00",
 3,,"$36,000 - $45,999","MED_INC_QUAR_00",

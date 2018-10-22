@@ -7,6 +7,7 @@
 #' 
 # init -------------------------------------------------------------------------
 source('global.R');
+options(gitstamp_prod=F);
 .currentscript <- parent.frame(2)$ofile;
 if(is.null(.currentscript)) .currentscript <- 'RUN_FROM_INTERACTIVE_SESSION';
 tself(scriptname=.currentscript);

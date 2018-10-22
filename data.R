@@ -42,7 +42,7 @@ for(.ii in setdiff(levels_map$varname,v(c_donotmap))){
 for(.ii in intersect(levels_map$varname,v(c_donotmap))){
   # so far all the special levels of 0 amount to a numeric value of 0, but this 
   # might need to be handled differently later
-  .navals <- setdiff(levels_map[levels_map$var_rename==.ii,'code'],0);
+  .navals <- setdiff(levels_map[levels_map$varname==.ii,'code'],0);
   dat1[[paste0(.ii,'_special')]] <- factorclean(dat1[[.ii]],spec_mapper=levels_map
                                                 ,var=.ii,droplevels = T);
   dat1[[.ii]][dat1[[.ii]] %in% .navals] <- NA;

@@ -98,7 +98,7 @@ sample_rows <- if(!exists('use_all_data')) {
 
 dat0 <- LaF::read_lines(fh,rows=sample_rows);
 
-# empirical data characterization ---------
+# empirical data characterization ----------------------------------------------
 .raw_col <- match(dct0$colname,names(dat0));
 dct0[na.omit(.raw_col),c('n_missing','n_unique')] <- sapply(
   dat0,function(xx) c(sum(xx %in% c(NA,'')),length(setdiff(xx,c(NA,''))))) %>%

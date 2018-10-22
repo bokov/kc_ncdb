@@ -57,9 +57,9 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
       gsub('\t','',.) %>% c(NA,.) %>% paste0(collapse='\n') %>% 
       read_delim(.,'"',col_names=F,skip = 1,trim_ws=T) %>% select(1:2) %>% 
       cbind(var=xx[3],stringsAsFactors=F)}) %>% 
-  do.call(rbind,.) %>% set_names(c('code','label','varname')) %>% 
+  do.call(rbind,.) %>% set_names(c('code','label','varname')) 
   #subset(!varname %in% .levels_map_ignore);
-  subset(!varname %in% v(c_donotmap));
+  #subset(!varname %in% v(c_donotmap));
 #' 
 #' This allows persistent tweaks to level names
 if(file.exists(levels_map_file)){

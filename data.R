@@ -81,7 +81,8 @@ sbs0$eligib0 <- Reduce(intersect,sbs0);
 #' Create dummy variables for univariate analysis of individual levels where
 #' applicable
 dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>% 
-  dummy.data.frame(names=setdiff(v(c_discrete),c(v(c_missingmap),v(c_nonanalytic)))
+  dummy.data.frame(names=setdiff(v(c_discrete)
+                                 ,c(v(c_missingmap),v(c_nonanalytic)))
                    ,omit.constants = F,dummy.classes = '',sep=':::');
 #' 
 #' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
@@ -108,12 +109,13 @@ dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>%
                #   # only the patients who are presenting with their first ever tumor
                #   SEQUENCE_NUMBER=='00');
 
-cph_uni <- setdiff(names(dat2),v(c_nonanalytic)) %>% 
+cph_uni <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
   sapply(function(xx) try(update(.cph0,paste0('.~`',xx,'`'))),simplify=F);
 cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-  sapply(function(xx) c(tidy(xx),glance(xx)),simplify=F) %>% do.call(rbind,.) %>% as.data.frame %>% 
-  cbind(var=rownames(.),.) %>% arrange(desc(concordance)) %>% 
-  mutate(p.sc.adj=p.adjust(p.value.sc));
+  sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
+  do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
+  mutate(var=gsub('`|:::.*$','',term),level=gsub('^.*:::|`','',term)
+         ,p.adj.sc=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

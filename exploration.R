@@ -258,92 +258,26 @@ cat('FOO\n\nplaceholder');
 #' The below variables are subject to change as the data validation and 
 #' preparation processes evolve.
 #' 
-#+ TableOne, cache=FALSE
-subset(dat1,PUF_CASE_ID %in% sbs0$eligib0 & 
-         a_eth %in% c('Hispanic','non-Hisp White')) %>% 
+#+ TableOne
+.tc <- paste0('
+Summary of all categoric variables compared between Hispanic and non-Hispanic
+white cancer patients. {#tbl:hspnhwcat}');
+
+subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>% 
   CreateTableOne(setdiff(subset(dct0,type %in% c('int','long'))$colname
                          ,c(v(c_nonanalytic),v(c_discrete)))
                  ,strata = 'a_eth',data=.) %>% print(printToggle=F) %>% 
-  pander(.,col.names=gsub('test','',colnames(.)));
+  pander(.,col.names=gsub('test','',colnames(.)),caption=.tc);
 #+ TableOneCat
-subset(dat1,PUF_CASE_ID %in% sbs0$eligib0 &
+.tc <- paste0('
+Summary of all continuous variables compared between Hispanic and non-Hispanic
+white cancer patients. {#tbl:hspnhwnum}');
+
+subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw &
          a_eth %in% c('Hispanic','non-Hisp White')) %>% 
   CreateTableOne(setdiff(v(c_discrete),c(v(c_nonanalytic),'a_eth'))
                  ,strata = 'a_eth',data=.) %>% print(printToggle=F) %>% 
-  pander(.,col.names=gsub('test','',colnames(.)));
-# .tc <- paste0('
-# Summary of all the variables in the combined i2b2/NAACCR set broken up by '
-# ,fs('a_n_recur'),'. `Disease-free` and `Never disease-free` have the same 
-# meanings as codes 00 and 70 in the [NAACCR definition]('
-# ,paste0(urls$dict_naaccr,'#1880'),') for ',fs('n_rectype'),". `Recurred` is any 
-# code other than (00, 70, or 99), and `Unknown if recurred or was ever gone` is 
-# 99. `Not in NAACCR` means there is an EMR diagnosis of kidney cancer and there 
-# may in some cases also be a _record_ for that patient in NAACCR but it does not 
-# indicate kidney as the principal site {#tbl:cohortrectype}");
-# 
-# dat2a[,unique(c('patient_num',v(c_analytic),'n_cstatus','e_death'
-#         ,'a_n_race','a_n_dm','a_e_dm','a_e_kc','n_kcancer','a_n_recur'
-#         ,'a_hsp_naaccr'))] %>% 
-#   mutate(
-#     a_n_recur=ifelse(!patient_num %in% kcpatients.naaccr | a_n_recur==''
-#                      ,'NONE',as.character(a_n_recur)) %>% 
-#       # changing the order of the levels so the NONE ends up on the right side
-#       factor(.,levels=c(setdiff(sort(unique(.)),'NONE'),'NONE')) %>% 
-#       recode(NONE='Not in NAACCR')
-#     # n_cstatus=ifelse(!patient_num%in%kcpatients.naaccr
-#     #                  ,'No KC in NAACCR',as.character(n_cstatus)) %>%
-#     #   factor(levels=c(levels(n_cstatus),'No KC in NAACCR')),
-#     ,n_vtstat=n_vtstat<=age_at_visit_days
-#     ,s_death=s_death<=age_at_visit_days
-#     ,e_death=e_death<=age_at_visit_days
-#     ,a_tdeath=a_tdeath<=age_at_visit_days
-#     ,a_tdiag=a_tdiag<=age_at_visit_days
-#     ,a_trecur=a_trecur<=age_at_visit_days
-#     ,a_tsurg=a_tsurg<=age_at_visit_days
-#     ,age_at_visit_days=age_at_visit_days/365.25
-#     #,n_kcancer=n_kcancer>=0
-#     ) %>% assign('.t1input',.,envir=.GlobalEnv) %>%
-#   rename(`Age at Last Contact, combined`=age_at_visit_days
-#          ,`Sex, i2b2`=sex_cd
-#          ,`Sex, Registry`=n_sex
-#          ,`Language, i2b2`=language_cd
-#          ,`Hispanic, i2b2`=e_hisp
-#          ,`Hispanic, Registry`=n_hisp
-#          ,`Race, i2b2`=race_cd
-#          ,`Race, Registry`=a_n_race
-#          ,`Marital Status, Registry`=n_marital
-#          ,`Deceased, Registry`=n_vtstat
-#          ,`Deceased, SSN`=s_death
-#          ,`Deceased, EMR`=e_death
-#          ,`Insurance, Registry`=n_payer
-#          ,`Diabetes, Registry`=a_n_dm
-#          ,`Diabetes, i2b2`=a_e_dm
-#          ,`Kidney Cancer, Registry`=n_kcancer
-#          ,`Kidney Cancer, i2b2`=a_e_kc
-#          ,BMI=e_bmi) %>% select(-patient_num) %>%
-#   select(sort(names(.))) %>% 
-#   CreateTableOne(vars = setdiff(names(.),'a_n_recur'),strata='a_n_recur'
-#                  ,data = .,includeNA = T,test = F) %>% 
-#   print(printToggle=F) %>% 
-#   set_rownames(gsub('^([A-Za-z].*)$','**\\1**'
-#                     ,gsub('   ','&nbsp;&nbsp;',rownames(.)))) %>%
-#   set_rownames(gsub('[ ]?=[ ]?|[ ]?TRUE[ ]?',' ',rownames(.))) %>%
-#   gsub('0[ ]?\\([ ]+0\\.0\\)','0',.) %>% 
-#   pander(emphasize.rownames=F,caption=.tc);
-# With above just a matter of finding a place to put the code below and then
-# cleaning it up a little (including restricting it only to predictor vars that
-# come from NAACCR)
-# Hispanic table
-# 
-# .t1input %>% subset(patient_num %in% kcpatients.naaccr) %>% droplevels %>%
-#   CreateTableOne(vars=setdiff(names(.),c('a_hsp_naaccr','patient_num'))
-#                  ,strata='a_hsp_naaccr',data=.,includeNA = T ) %>%
-#   print(printToggle=F,missing=T) %>% `[`(,-6) %>%
-#   set_rownames(gsub('^([A-Za-z].*)$','**\\1**'
-#                     ,gsub('   ','&nbsp;&nbsp;',rownames(.)))) %>%
-#   set_rownames(gsub('[ ]?=[ ]?|[ ]?TRUE[ ]?',' ',rownames(.))) %>%
-#   gsub('0[ ]?\\([ ]+0\\.0\\)','0',.) %>%
-#   pander(emphasize.rownames=F);
+  pander(.,col.names=gsub('test','',colnames(.)),caption=.tc);
 #
 # conclusions ---------------------------------------------------------
 #' # Conclusion and next steps {#sec:nextsteps}

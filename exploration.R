@@ -196,7 +196,7 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 #+ .survfit_prep,results='hide'
 # prepare if needed
 #' ###### blank
-#' ::::: {#fig:surg_survfit custom-style="Image Caption"}
+#' ::::: {#surg_survfit custom-style="Image Caption"}
 #+ surv_surg,results='asis',fig.align='center'
 .survfit_plot0 <- mutate(dat1
                          ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(
@@ -226,7 +226,7 @@ occurring more than 3 years post-diagnosis are treated as censored)');
 #' 
 #' ###### blank
 #'
-#' ::::: {#fig:naaccrdeath_survfit custom-style="Image Caption"}
+#' ::::: {#naaccrdeath_survfit custom-style="Image Caption"}
 #+ naaccrdeath_survfit,results='asis',fig.dim=c(3.1,3),fig.align='center'
 # (.survfit_plot2 <- update(.survfit_plot1,eventvars='n_vtstat'
 #                           # ,plotadd = list(
@@ -245,7 +245,7 @@ occurring more than 3 years post-diagnosis are treated as censored)');
 cat('FOO\n\nplaceholder');
 #' :::::
 #' 
-#' ::::: {#fig:alldeath_survfit custom-style="Image Caption"}
+#' ::::: {#alldeath_survfit custom-style="Image Caption"}
 #+ alldeath_survfit,results='asis',fig.dim=c(3.1,3),fig.align='center'
 # also do plots for survival stratified by age and by stage
 #' :::::
@@ -260,8 +260,8 @@ cat('FOO\n\nplaceholder');
 #' 
 #+ TableOne
 .tc <- paste0('
-Summary of all categoric variables compared between Hispanic and non-Hispanic
-white cancer patients. {#tbl:hspnhwcat}');
+Summary of all continuous variables compared between Hispanic and non-Hispanic
+white cancer patients. {#hspnhwcat}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>% 
   CreateTableOne(setdiff(subset(dct0,type %in% c('int','long'))$colname
@@ -270,8 +270,8 @@ subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>%
   pander(.,col.names=gsub('test','',colnames(.)),caption=.tc);
 #+ TableOneCat
 .tc <- paste0('
-Summary of all continuous variables compared between Hispanic and non-Hispanic
-white cancer patients. {#tbl:hspnhwnum}');
+Summary of all categoric variables compared between Hispanic and non-Hispanic
+white cancer patients. {#hspnhwnum}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw &
          a_eth %in% c('Hispanic','non-Hisp White')) %>% 
@@ -325,28 +325,28 @@ subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw &
 #' 
 #+ stagegrp
 # .tc <- paste0('Frequency of various combinations of '
-#               ,knitr::combine_words(fs(v(c_stagegrp))),' {#tbl:stagegrp}');
+#               ,knitr::combine_words(fs(v(c_stagegrp))),' {#stagegrp}');
 # 
 # pander(head(tnmtabs$c_stagegrp,20),col.names=c(fs(colnames(tnmtabs$c_stagegrp)[1:4])
 #                                              ,'N'),caption=.tc);
 #' 
 #+ staget
 # .tc <- paste0('Frequency of various combinations of '
-# ,knitr::combine_words(fs(v(c_staget))),' {#tbl:staget}');
+# ,knitr::combine_words(fs(v(c_staget))),' {#staget}');
 # 
 # pander(head(tnmtabs$c_staget,20),col.names=c(fs(colnames(tnmtabs$c_staget)[1:4])
 #                                              ,'N'),caption=.tc);
 #' 
 #+ stagen
 # .tc <- paste0('Frequency of various combinations of '
-#               ,knitr::combine_words(fs(v(c_stagen))),' {#tbl:stagen}');
+#               ,knitr::combine_words(fs(v(c_stagen))),' {#stagen}');
 # 
 # pander(head(tnmtabs$c_stagen,20),col.names=c(fs(colnames(tnmtabs$c_stagen)[1:4])
 #                                              ,'N'),caption=.tc);
 #' 
 #+ stagem
 # .tc <- paste0('Frequency of various combinations of '
-#               ,knitr::combine_words(fs(v(c_stagem))),' {#tbl:stagem}');
+#               ,knitr::combine_words(fs(v(c_stagem))),' {#stagem}');
 # 
 # pander(head(tnmtabs$c_stagem,20),col.names=c(fs(colnames(tnmtabs$c_stagem)[1:4])
 #                                              ,'N'),caption=.tc);

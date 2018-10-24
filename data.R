@@ -80,34 +80,40 @@ dat1$a_eth <- with(dat1
 #' Simplify the TNM_PATH_T variable
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.);
 # subsets ---------------------------------------------------------------
-sbs0 <- alist(kidney=PRIMARY_SITE=='C649',
+sbs0 <- alist(kidney=PRIMARY_SITE=='C649'
               # analyze stage IV separately
-              no_stg4=ANALYTIC_STAGE_GROUP!='4: Stage IV',
+              ,no_stg4=!ANALYTIC_STAGE_GROUP %in% c('4: Stage IV','Stage IV')
               # only do the surgical cases
-              surgery=REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+              ,surgery=REASON_FOR_NO_SURGERY==
+                '0: Surgery of the primary site was performed'&
                 # only do the surgical cases
-                RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site',
+                RX_HOSP_SURG_APPR_2010!=
+                '0: No surgical procedure of primary site'
               # only the patients who are presenting with their first ever tumor
-              firstcancer=SEQUENCE_NUMBER=='00') %>% lapply(function(xx) with(dat1,PUF_CASE_ID[eval(xx)]));
-sbs0$eligib0 <- Reduce(intersect,sbs0);
+              ,firstcancer=SEQUENCE_NUMBER=='00'
+              # Hispanic or NHW only
+              ,hisp_nhw=a_eth%in%c('Hispanic','non-Hisp White')
+              # Non missing stage
+              ,no_missingstg=!ANALYTIC_STAGE_GROUP %in% 
+                c('8: AJCC Staging not applicable','Not applicable'
+                  ,'9: AJCC Stage Group unknown','Unknown')
+              ) %>% lapply(function(xx) with(dat1,PUF_CASE_ID[eval(xx)]));
+sbs0$s_comparable <- cm(Reduce(intersect,sbs0[c('kidney','no_stg4','surgery'
+                                             ,'firstcancer')])
+                        ,'Excluding known/irrelevant causes of variation for
+                        more detailed data-mining');
+sbs0$s_hspnhw <- cm(Reduce(intersect,sbs0[c('kidney','hisp_nhw'
+                                         ,'no_missingstg')])
+                    ,'For characterizing populations and identifying sources of
+                    gross variation to exclude');
 
 # dummy variables -------------------------------------------------------
 #' Create dummy variables for univariate analysis of individual levels where
 #' applicable
-dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>% 
+dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$s_comparable) %>% 
   dummy.data.frame(names=setdiff(v(c_discrete)
                                  ,c(v(c_missingmap),v(c_nonanalytic)))
                    ,omit.constants = F,dummy.classes = '',sep=':::');
-#' 
-#' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
-#'   mutate( NAACCR=patient_num %in% kcpatients.naaccr
-#'          ,EMR=patient_num %in% kcpatients.emr
-#'          ,PreExisting=patient_num %in% kcpatients.pre_existing
-#'          ,combo=interaction(NAACCR,EMR,PreExisting)) %>% group_by(combo);
-#' 
-#' consort_table <- summarise(cohorts,NAACCR=any(NAACCR),EMR=any(EMR)
-#'                            ,PreExisting=any(PreExisting)
-#'                            ,N=length(patient_num))[,-1];
 # cox ph ----------
 #' Bulk univariate analysis
 .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1

@@ -135,5 +135,8 @@ fstmplts <- list(
   ,plain_colnamelong="%4$s"
   # note2self spans, each linking to a ticket
   ,n2s=paste0('(',urls$git_tix,'%1$s){#gh%1$s .note2self custom-style="note2self"}')
+  # NCDB style variable definitions
+  ,ncdb_def=paste(':::::{%2$s .vardef custom-style=\"vardef\"}',' %4$s :'
+                  ,'  ~ %1$s\n\n',sep='\n\n')
 );
 c()

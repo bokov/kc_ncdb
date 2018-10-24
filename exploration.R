@@ -231,11 +231,12 @@ ggplot(.dat1plots,aes(x=a_eth,fill=SEQUENCE_NUMBER)) +
   scale_alpha_manual(values = c(1,.2)) + 
   theme_light(base_family='Times') + 
   theme(strip.background=element_rect(fill=NA)
+        ,plot.title = element_text(hjust = 0.5)
         ,axis.text.x = element_text(angle = 25,vjust = 0.5)
         ,strip.text = element_text(color='black')) + 
   scale_y_continuous(labels=scales::percent) + 
   ylab(label = '')+xlab(label='Ethnicity') + 
-  guides(fill=guide_legend(''))+labs(title='Sequence Number');
+  guides(fill=guide_legend(''))+labs(title='Sequence number');
 
 cat('
 
@@ -258,6 +259,7 @@ ggplot(.dat1plots,aes(x=a_eth
   scale_alpha_manual(values = c(1,.2)) + 
   theme_light(base_family='Times') + 
   theme(strip.background=element_rect(fill=NA)
+        ,plot.title = element_text(hjust = 0.5)
         ,axis.text.x = element_text(angle = 25,vjust = 0.5)
         ,strip.text = element_text(color='black')) + 
   scale_y_continuous(labels=scales::percent) + 
@@ -278,6 +280,7 @@ ggplot(.dat1plots,aes(x=a_eth,fill=a_analytic_stage_group)) +
   scale_alpha_manual(values = c(1,.2)) + 
   theme_light(base_family='Times') + 
   theme(strip.background=element_rect(fill=NA)
+        ,plot.title = element_text(hjust = 0.5)
         ,axis.text.x = element_text(angle = 25,vjust = 0.5)
         ,strip.text = element_text(color='black')) + 
   scale_y_continuous(labels=scales::percent) + 
@@ -300,14 +303,16 @@ cat('
                         ,break.time.by=30,xlim=c(0,120)
                         ,ggtheme = theme_light(base_family = 'Times')
                         ,xlab='Months since diagnosis'
+                        # this can also take a subtitle arg
                         ,title='Survival by sex, age,
-stage, and ethnicity',subtitle=' ') +
+stage, and ethnicity') +
    scale_y_continuous(labels=scales::percent) +
    facet_grid(Stage4+a_sex~AGE,labeller = labeller(AGE=label_both)) + 
    scale_alpha_manual(values = c(1,.5)) + 
    guides(color=guide_legend(''),alpha=guide_legend(''))
  )$plot + theme(strip.background = element_rect(fill=NA)
-                ,strip.text = element_text(color='black'));
+                ,strip.text = element_text(color='black')
+                ,plot.title = element_text(hjust = 0.5));
 
 cat('
 
@@ -323,7 +328,7 @@ cat('
 #+ TableOne
 .tc <- paste0('
 Summary of all continuous variables compared between Hispanic and non-Hispanic
-white cancer patients. {#hspnhwnum}');
+white cancer patients. {#tbl:hspnhwnum}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>% 
   CreateTableOne(setdiff(subset(dct0,type %in% c('int','long'))$colname
@@ -333,7 +338,7 @@ subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>%
 #+ TableOneCat
 .tc <- paste0('
 Summary of all categoric variables compared between Hispanic and non-Hispanic
-white cancer patients. {#hspnhwcat}');
+white cancer patients. {#tbl:hspnhwcat}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw &
          a_eth %in% c('Hispanic','non-Hisp White')) %>% 
@@ -459,13 +464,21 @@ fs(getOption('fs_reg'),url=paste0('#',getOption('fs_reg'))
 # # fs() yet because 'blah blah' has to be pasted together from the non-NA 
 # # values of several columns.
 # # Below needs to be uncommented when ready to do the new links
+#'
+#+ vardefs, results='asis'
+for(ii in getOption('fs_reg')) {
+  fs(ii,url=paste0('#',ii)
+     ,template=fstmplts$ncdb_def,retfun = cat);
+  cat(paste0('  ~ ',na.omit(unlist(subset(dct0,colname==ii)[,c('comments')]))
+             ,'\n\n'),sep='');
+  cat(':::::\n\n')};
 # .junk <- dct0[match(getOption('fs_reg')
-#                     ,do.call(coalesce,dct0[,c('varname','colname')]))
-#               ,c('varname','colname_long','chartname'
-#                  ,'comment','col_url','colname')] %>%
+#                     ,do.call(coalesce,dct0[,c('colname')]))
+#               ,c('colname_long','chartname'
+#                  ,'comments','col_url','colname')] %>%
 #   # subset(dct0,varname %in% getOption('fs_reg')
 #   #               ,select = c('varname','colname_long','chartname','comment'
-#   #                           ,'col_url')) %>% 
+#   #                           ,'col_url')) %>%
 #   apply(1,function(xx) {
 #     # TODO: the hardcoded offsets make this brittle. Fina better way.
 #     cat('######',na.omit(xx[c(1,6)])[1],'\n\n',na.omit(xx[2:1])[1],':\n\n  ~ '

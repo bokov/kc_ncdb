@@ -52,8 +52,8 @@ instrequire(
     #,'lubridate'
     
     # plotting
-    ,'ggfortify'
-    #,'ggplot2','grid','GGally','heatmap3','survminer','gridExtra','scales'
+    ,'ggfortify','survminer'
+    #,'ggplot2','grid','GGally','heatmap3','gridExtra','scales'
     
     # string manipulation
     ,'stringi' #,'stringr'

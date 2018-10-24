@@ -22,11 +22,14 @@
 #' output:
 #'  html_document:
 #'   keep_md: true
+#'   pandoc_args: ['--filter','pandoc-crossref']
 #'  word_document:
 #'   reference_docx: 'nt_styletemplate.docx'
 #'   keep_md: true
+#'   pandoc_args: ['--filter','pandoc-crossref']
 #'  pdf_document:
 #'   keep_md: true
+#'   pandoc_args: ['--filter','pandoc-crossref']
 #' ---
 #' 
 #+ init, echo=FALSE, include=FALSE, message=FALSE
@@ -193,65 +196,124 @@ pander(.temp0,style='grid',keep.line.breaks=T,justify='left'
 #' outcomes were never observed). The lightly-shaded regions around each line 
 #' are 95% confidence intervals. 
 #' 
-#+ .survfit_prep,results='hide'
+#+ dat1plots,results='hide'
 # prepare if needed
+.dat1plots <- subset(dat1,PUF_CASE_ID%in% sbs0$s_hspnhw) %>% 
+  mutate(AGE=cut(AGE,quantile(AGE,(0:3)/3),include.lowest = T)
+         ,Stage4=recode(ANALYTIC_STAGE_GROUP
+                        ,`4: Stage IV`='Stage IV',.default='Stage 0-III'));
 #' ###### blank
-#' ::::: {#surg_survfit custom-style="Image Caption"}
-#+ surv_surg,results='asis',fig.align='center'
-.survfit_plot0 <- mutate(dat1
-                         ,c=DX_LASTCONTACT_DEATH_MONTHS-ifelse(
-                           PUF_VITAL_STATUS=='1: Alive',1,0)
-                         ,strt=0) %>% 
-  as_tibble %>% survfit_wrapper(
-    eventvars='DX_LASTCONTACT_DEATH_MONTHS',censrvars='c',startvars='strt'
-    # restrict them to non renal pelvis
-    ,subs=PRIMARY_SITE=='C649'&
-      # analyze stage IV separately
-      ANALYTIC_STAGE_GROUP!='4: Stage IV'&
-      # only do the surgical cases
-      REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
-      # only do the surgical cases
-      RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site'&
-      # only the patients who are presenting with their first ever tumor
-      SEQUENCE_NUMBER=='00'
-    ,fsargs=NA,predvars='a_hsp');
-.survfit_plot0$plot;
+#' ::::: {#fig:survoverall custom-style="Image Caption"}
+#+ survoverall,results='asis',fig.align='center'
+ggsurvplot(survfit(Surv(DX_LASTCONTACT_DEATH_MONTHS
+                        ,PUF_VITAL_STATUS=='0: Dead') ~ 
+                     a_eth,.dat1plots)
+           ,.dat1plots,color = 'a_eth',alpha='a_eth'
+           ,break.time.by=30,xlim=c(0,120)
+           ,ggtheme = theme_light(base_family = 'Times')
+           ,xlab='Months since diagnosis'
+           ,title='Survival by ethnicity',subtitle=' ') +
+  scale_y_continuous(labels=scales::percent) +
+  scale_alpha_manual(values = c(1,.5)) + 
+  guides(color=guide_legend(''),alpha=guide_legend(''));
 cat('
 
-Number of weeks elapsed from ',fs('a_tdiag'),' (time 0) to ',fs('a_tsurg')
-,' for ',.survfit_plot0$fit$n[1],' Hispanic and ',.survfit_plot0$fit$n[2]
-,' non-Hispanic white patients with a 3-year follow-up period (any surgeries
-occurring more than 3 years post-diagnosis are treated as censored)');
+Number of weeks elapsed from diagnosis for Hispanic and non-Hispanic white patients with a 10-year follow-up period');
 #' :::::
 #' 
 #' ###### blank
 #'
-#' ::::: {#naaccrdeath_survfit custom-style="Image Caption"}
-#+ naaccrdeath_survfit,results='asis',fig.dim=c(3.1,3),fig.align='center'
-# (.survfit_plot2 <- update(.survfit_plot1,eventvars='n_vtstat'
-#                           # ,plotadd = list(
-#                           #   guides(colour=guide_legend('')
-#                           #          ,fill=guide_legend(''))
-#                           #   ,coord_cartesian(ylim=c(.5,1))
-#                           #   ,theme_light()
-#                           #   ,theme(legend.position = 'top'))
-#                           ,main='Time from surgery to death\n'
-#                           ,ylab='Fraction alive'))$plot;
-# cat('
-# 
-# Like [@fig:recur_survfit] except now the outcome is ',fs('n_vtstat')
-# ,' for ',.survfit_plot2$fit$n[1],' Hispanic  and ',.survfit_plot2$fit$n[2]
-# ,' non-Hispanic white patients. Six-year follow-up');
-cat('FOO\n\nplaceholder');
-#' :::::
-#' 
-#' ::::: {#alldeath_survfit custom-style="Image Caption"}
-#+ alldeath_survfit,results='asis',fig.dim=c(3.1,3),fig.align='center'
-# also do plots for survival stratified by age and by stage
+#' ::::: {#fig:seqnum custom-style="Image Caption"}
+#+ seqnum, results='asis'
+ggplot(.dat1plots,aes(x=a_eth,fill=SEQUENCE_NUMBER)) + 
+  geom_bar(position='fill') + 
+  facet_grid(a_sex~AGE,labeller = labeller(AGE=label_both)) + 
+  scale_alpha_manual(values = c(1,.2)) + 
+  theme_light(base_family='Times') + 
+  theme(strip.background=element_rect(fill=NA)
+        ,axis.text.x = element_text(angle = 25,vjust = 0.5)
+        ,strip.text = element_text(color='black')) + 
+  scale_y_continuous(labels=scales::percent) + 
+  ylab(label = '')+xlab(label='Ethnicity') + 
+  guides(fill=guide_legend(''))+labs(title='Sequence Number');
+
+cat('
+
+',fs('SEQUENCE_NUMBER')," indicates which tumor in the patient's history the 
+index tumor happens to be (regardless of site). So, for instance a patient who
+has previously had breast cancer and now comes in with kidney cancer would be 
+assigned a ",fs('SEQUENCE_NUMBER')," of `01`. A value of `00` indicates a 
+first-ever tumor.");
 #' :::::
 #' 
 #' ###### blank
 #' 
+#' ::::: {#fig:rnosurg custom-style="Image Caption"}
+#+ rnosurg, results='asis'
+ggplot(.dat1plots,aes(x=a_eth
+                      ,fill=paste0(stringr::str_wrap(REASON_FOR_NO_SURGERY
+                                                     ,30,exdent=4),'\n'))) + 
+  geom_bar(position='fill') + 
+  facet_grid(a_sex~AGE,labeller = labeller(AGE=label_both)) + 
+  scale_alpha_manual(values = c(1,.2)) + 
+  theme_light(base_family='Times') + 
+  theme(strip.background=element_rect(fill=NA)
+        ,axis.text.x = element_text(angle = 25,vjust = 0.5)
+        ,strip.text = element_text(color='black')) + 
+  scale_y_continuous(labels=scales::percent) + 
+  ylab(label = '')+xlab(label='Ethnicity') + 
+  guides(fill=guide_legend(''))+labs(title='Reason for no surgery');
+
+cat('
+
+',fs('REASON_FOR_NO_SURGERY'),' versus ethnicity');
+#' :::::
+#' ###### blank
+#' 
+#' ::::: {#fig:stage custom-style="Image Caption"}
+#+ stage, results='asis'
+ggplot(.dat1plots,aes(x=a_eth,fill=a_analytic_stage_group)) + 
+  geom_bar(position='fill') + 
+  facet_grid(a_sex~AGE,labeller = labeller(AGE=label_both)) + 
+  scale_alpha_manual(values = c(1,.2)) + 
+  theme_light(base_family='Times') + 
+  theme(strip.background=element_rect(fill=NA)
+        ,axis.text.x = element_text(angle = 25,vjust = 0.5)
+        ,strip.text = element_text(color='black')) + 
+  scale_y_continuous(labels=scales::percent) + 
+  ylab(label = '')+xlab(label='Ethnicity') + 
+  guides(fill=guide_legend(''))+labs(title='Stage');
+
+cat('
+
+',fs('ANALYTIC_STAGE_GROUP'),' versus ethnicity');
+#' :::::
+#' 
+#' ###### blank
+#' 
+#' ::::: {#fig:survgrps custom-style="Image Caption"}
+#+ srvgrps, results='asis'
+(.surv_sas<- ggsurvplot(survfit(Surv(DX_LASTCONTACT_DEATH_MONTHS
+                                     ,PUF_VITAL_STATUS=='0: Dead') ~ 
+                                  a_eth+a_sex+AGE+Stage4,.dat1plots)
+                        ,.dat1plots,color = 'a_eth',alpha='a_eth'
+                        ,break.time.by=30,xlim=c(0,120)
+                        ,ggtheme = theme_light(base_family = 'Times')
+                        ,xlab='Months since diagnosis'
+                        ,title='Survival by sex, age,
+stage, and ethnicity',subtitle=' ') +
+   scale_y_continuous(labels=scales::percent) +
+   facet_grid(Stage4+a_sex~AGE,labeller = labeller(AGE=label_both)) + 
+   scale_alpha_manual(values = c(1,.5)) + 
+   guides(color=guide_legend(''),alpha=guide_legend(''))
+ )$plot + theme(strip.background = element_rect(fill=NA)
+                ,strip.text = element_text(color='black'));
+
+cat('
+
+',fs('DX_LASTCONTACT_DEATH_MONTHS'),' censored on ',fs('PUF_VITAL_STATUS'));
+#' :::::
+#' ###### blank
 # tableone ---------------------------------------------------------------------
 #' # Cohort Characterization {#sec:cohorchar}
 #'
@@ -261,7 +323,7 @@ cat('FOO\n\nplaceholder');
 #+ TableOne
 .tc <- paste0('
 Summary of all continuous variables compared between Hispanic and non-Hispanic
-white cancer patients. {#hspnhwcat}');
+white cancer patients. {#hspnhwnum}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>% 
   CreateTableOne(setdiff(subset(dct0,type %in% c('int','long'))$colname
@@ -271,7 +333,7 @@ subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw) %>%
 #+ TableOneCat
 .tc <- paste0('
 Summary of all categoric variables compared between Hispanic and non-Hispanic
-white cancer patients. {#hspnhwnum}');
+white cancer patients. {#hspnhwcat}');
 
 subset(dat1,PUF_CASE_ID %in% sbs0$s_hspnhw &
          a_eth %in% c('Hispanic','non-Hisp White')) %>% 

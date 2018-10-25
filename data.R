@@ -54,13 +54,7 @@ for(.ii in intersect(levels_map$varname,v(c_donotmap))){
     dat1[[.sii]][!is.na(dat1[[.ii]])]<-NA;}
 }
 #' 
-#' Simplified recurrence type: Not available in NCDB?
-#' 
-#' Unified diabetes comorbidity: no comorbidity in NCDB as far as I can tell
-#' 
-#' Find the patients which had active kidney cancer (rather than starting with 
-#' pre-existing): data not available in NCDB as far as I can tell
-#' 
+#' Map official NCDB labels to their numeric codes
 for(ii in unique(subset(levels_map,!is.na(relabel))$varname)){
   .ilevs <- subset(levels_map,varname==ii);
   .irename <- .ilevs[,c('var_rename','varname')] %>% 
@@ -99,34 +93,25 @@ dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>%
                                  ,c(v(c_missingmap),v(c_nonanalytic)))
                    ,omit.constants = F,dummy.classes = '',sep=':::');
 #' 
-#' cohorts <- data.frame(patient_num=unique(dat1$patient_num)) %>% 
-#'   mutate( NAACCR=patient_num %in% kcpatients.naaccr
-#'          ,EMR=patient_num %in% kcpatients.emr
-#'          ,PreExisting=patient_num %in% kcpatients.pre_existing
-#'          ,combo=interaction(NAACCR,EMR,PreExisting)) %>% group_by(combo);
-#' 
-#' consort_table <- summarise(cohorts,NAACCR=any(NAACCR),EMR=any(EMR)
-#'                            ,PreExisting=any(PreExisting)
-#'                            ,N=length(patient_num))[,-1];
 # cox ph ----------
 #' Bulk univariate analysis
-.cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
-               ,data=dat2);
-.cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
-  sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
-                           mean(is.na(dat2[[xx]])<0.2)&&
-                           #!grepl('_special$',xx)&&
-                           (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
-           sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
-cph_uni <- list();
-message('Doing univariate fits');
-for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
-                                                       ,.cph0_update[[.ii]]);
-cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-  sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
-  do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
-  mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
-         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
+# .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
+#                ,data=dat2);
+# .cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
+#   sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
+#                            mean(is.na(dat2[[xx]])<0.2)&&
+#                            #!grepl('_special$',xx)&&
+#                            (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
+#            sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
+# cph_uni <- list();
+# message('Doing univariate fits');
+# for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
+#                                                        ,.cph0_update[[.ii]]);
+# cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
+#   sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
+#   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
+#   mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
+#          ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

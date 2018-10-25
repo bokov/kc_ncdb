@@ -43,10 +43,6 @@ if(file.exists(dctfile_tpl)){
                                 ,setdiff(colnames(.dctold),colnames(dct0)))]);
 }
 
-#if(nrow(dct0)!=length(grep('^label var',.dctraw))) {
-#  stop('
-#Data dictionary mismatch the "make data dictionary" section of dictionary.R')};
-
 #'
 # level names ------------------------------------------------------------------
 levels_map <- data.frame(lstart=grep('^label define',.dctraw)
@@ -59,8 +55,6 @@ levels_map <- data.frame(lstart=grep('^label define',.dctraw)
       read_delim(.,'"',col_names=F,skip = 1,trim_ws=T) %>% select(1:2) %>% 
       cbind(var=xx[3],stringsAsFactors=F)}) %>% 
   do.call(rbind,.) %>% set_names(c('code','label','varname')) 
-  #subset(!varname %in% .levels_map_ignore);
-  #subset(!varname %in% v(c_donotmap));
 #' 
 #' This allows persistent tweaks to level names
 if(file.exists(levels_map_file)){
@@ -102,8 +96,6 @@ dct0[na.omit(.raw_col),c('n_missing','n_unique')] <- sapply(
   dat0,function(xx) c(sum(xx %in% c(NA,'')),length(setdiff(xx,c(NA,''))))) %>%
   t;
 dct0$c_discrete<-dct0$n_unique<=20;
-
-#dct0$class <- sapply(dat0,function(xx) paste0(class(xx),collapse=';'));
 
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 

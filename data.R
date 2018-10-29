@@ -77,8 +77,11 @@ dat1$a_eth <- with(dat1
                                 paste0('non-Hisp ',a_race)
                               ,TRUE ~ 
                                 as.character(a_race)));
-#' Simplify the TNM_PATH_T variable
+#' Simplify TNM variables
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.);
+dat1$a_clin_t <- submulti(dat1$TNM_CLIN_T
+                          ,searchrep = cbind(c('A','B','C','c','p')
+                                             ,c('','','','cT','pT')));
 # subsets ---------------------------------------------------------------
 sbs0 <- alist(kidney=PRIMARY_SITE=='C649'
               # analyze stage IV separately

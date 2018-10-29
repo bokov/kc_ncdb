@@ -54,7 +54,13 @@ for(.ii in intersect(levels_map$varname,v(c_donotmap))){
     dat1[[.sii]][!is.na(dat1[[.ii]])]<-NA;}
 }
 #' 
-#' Map official NCDB labels to their numeric codes
+#' Simplified recurrence type: Not available in NCDB?
+#' 
+#' Unified diabetes comorbidity: no comorbidity in NCDB as far as I can tell
+#' 
+#' Find the patients which had active kidney cancer (rather than starting with 
+#' pre-existing): data not available in NCDB as far as I can tell
+#' 
 for(ii in unique(subset(levels_map,!is.na(relabel))$varname)){
   .ilevs <- subset(levels_map,varname==ii);
   .irename <- .ilevs[,c('var_rename','varname')] %>% 
@@ -74,44 +80,59 @@ dat1$a_eth <- with(dat1
 #' Simplify the TNM_PATH_T variable
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.);
 # subsets ---------------------------------------------------------------
-sbs0 <- alist(kidney=PRIMARY_SITE=='C649',
+sbs0 <- alist(kidney=PRIMARY_SITE=='C649'
               # analyze stage IV separately
-              no_stg4=ANALYTIC_STAGE_GROUP!='4: Stage IV',
+              ,no_stg4=!ANALYTIC_STAGE_GROUP %in% c('4: Stage IV','Stage IV')
               # only do the surgical cases
-              surgery=REASON_FOR_NO_SURGERY=='0: Surgery of the primary site was performed'&
+              ,surgery=REASON_FOR_NO_SURGERY==
+                '0: Surgery of the primary site was performed'&
                 # only do the surgical cases
-                RX_HOSP_SURG_APPR_2010!='0: No surgical procedure of primary site',
+                RX_HOSP_SURG_APPR_2010!=
+                '0: No surgical procedure of primary site'
               # only the patients who are presenting with their first ever tumor
-              firstcancer=SEQUENCE_NUMBER=='00') %>% lapply(function(xx) with(dat1,PUF_CASE_ID[eval(xx)]));
-sbs0$eligib0 <- Reduce(intersect,sbs0);
+              ,firstcancer=SEQUENCE_NUMBER=='00'
+              # Hispanic or NHW only
+              ,hisp_nhw=a_eth%in%c('Hispanic','non-Hisp White')
+              # Non missing stage
+              ,no_missingstg=!ANALYTIC_STAGE_GROUP %in% 
+                c('8: AJCC Staging not applicable','Not applicable'
+                  ,'9: AJCC Stage Group unknown','Unknown')
+              ) %>% lapply(function(xx) with(dat1,PUF_CASE_ID[eval(xx)]));
+sbs0$s_comparable <- cm(Reduce(intersect,sbs0[c('kidney','no_stg4','surgery'
+                                             ,'firstcancer')])
+                        ,'Excluding known/irrelevant causes of variation for
+                        more detailed data-mining');
+sbs0$s_hspnhw <- cm(Reduce(intersect,sbs0[c('kidney','hisp_nhw'
+                                         ,'no_missingstg')])
+                    ,'For characterizing populations and identifying sources of
+                    gross variation to exclude');
 
 # dummy variables -------------------------------------------------------
 #' Create dummy variables for univariate analysis of individual levels where
 #' applicable
-dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$eligib0) %>% 
+dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$s_comparable) %>% 
   dummy.data.frame(names=setdiff(v(c_discrete)
                                  ,c(v(c_missingmap),v(c_nonanalytic)))
                    ,omit.constants = F,dummy.classes = '',sep=':::');
-#' 
 # cox ph ----------
 #' Bulk univariate analysis
-# .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
-#                ,data=dat2);
-# .cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
-#   sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
-#                            mean(is.na(dat2[[xx]])<0.2)&&
-#                            #!grepl('_special$',xx)&&
-#                            (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
-#            sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
-# cph_uni <- list();
-# message('Doing univariate fits');
-# for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
-#                                                        ,.cph0_update[[.ii]]);
-# cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-#   sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
-#   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
-#   mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
-#          ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
+.cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
+               ,data=dat2);
+.cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
+  sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
+                           mean(is.na(dat2[[xx]])<0.2)&&
+                           #!grepl('_special$',xx)&&
+                           (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
+           sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
+cph_uni <- list();
+message('Doing univariate fits');
+for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
+                                                       ,.cph0_update[[.ii]]);
+cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
+  sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
+  do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
+  mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
+         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

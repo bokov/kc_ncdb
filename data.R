@@ -111,31 +111,31 @@ sbs0$s_hspnhw <- cm(Reduce(intersect,sbs0[c('kidney','hisp_nhw'
                     gross variation to exclude');
 
 # dummy variables -------------------------------------------------------
-#' Create dummy variables for univariate analysis of individual levels where
-#' applicable
-dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$s_comparable) %>% 
-  dummy.data.frame(names=setdiff(v(c_discrete)
-                                 ,c(v(c_missingmap),v(c_nonanalytic)))
-                   ,omit.constants = F,dummy.classes = '',sep=':::');
-# cox ph ----------
-#' Bulk univariate analysis
-.cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
-               ,data=dat2);
-.cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
-  sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
-                           mean(is.na(dat2[[xx]])<0.2)&&
-                           #!grepl('_special$',xx)&&
-                           (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
-           sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
-cph_uni <- list();
-message('Doing univariate fits');
-for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
-                                                       ,.cph0_update[[.ii]]);
-cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-  sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
-  do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
-  mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
-         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
+#' #' Create dummy variables for univariate analysis of individual levels where
+#' #' applicable
+#' dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$s_comparable) %>% 
+#'   dummy.data.frame(names=setdiff(v(c_discrete)
+#'                                  ,c(v(c_missingmap),v(c_nonanalytic)))
+#'                    ,omit.constants = F,dummy.classes = '',sep=':::');
+#' # cox ph ----------
+#' #' Bulk univariate analysis
+#' .cph0 <- coxph(Surv(DX_LASTCONTACT_DEATH_MONTHS,PUF_VITAL_STATUS=='0: Dead')~1
+#'                ,data=dat2);
+#' .cph0_update <- setdiff(names(dat2),c(v(c_missingmap),v(c_nonanalytic))) %>% 
+#'   sapply(function(xx) xx[!xx %in% c(v(c_missingnap),v(c_nonanalytic)) && 
+#'                            mean(is.na(dat2[[xx]])<0.2)&&
+#'                            #!grepl('_special$',xx)&&
+#'                            (!grepl(':::',xx)||min(table(dat2[[xx]]))>20)] %>% 
+#'            sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
+#' cph_uni <- list();
+#' message('Doing univariate fits');
+#' for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
+#'                                                        ,.cph0_update[[.ii]]);
+#' cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
+#'   sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
+#'   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
+#'   mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
+#'          ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 

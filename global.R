@@ -93,6 +93,9 @@ dctfile <- paste0('dct_',basename(inputdata));
 levels_map_file <- 'levels_map.csv';
 #' random seed
 project_seed <- 20181018;
+#' In this branch we are looking at sites similar to UT Health and need 
+#' all the data
+use_all_data <- T;
 # searchrep --------------------------------------------------------------------
 globalsearchrep <- rbind(
   c('\\[[0-9,]+ facts; [0-9,]+ patients\\]','')

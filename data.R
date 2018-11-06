@@ -129,8 +129,8 @@ dat2 <- subset(dat1,PUF_CASE_ID %in% sbs0$s_comparable) %>%
            sprintf('.~`%s`',.),simplify=F) %>% `[`(.,sapply(.,length)>0);
 cph_uni <- list();
 message('Doing univariate fits');
-for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
-                                                       ,.cph0_update[[.ii]]);
+for(.ii in names(.cph0_update)) {
+  cph_uni[[.ii]]<-try(update(.cph0,.cph0_update[[.ii]]))};
 cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
   sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 

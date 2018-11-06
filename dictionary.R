@@ -71,8 +71,8 @@ if(file.exists(levels_map_file)){
 #' publishing its results no matter what they may be.
 #' 
 #' Or if you obtained a different year or eligibility set of course.
-input_nrows <- 465126;
-sample_size <- round(input_nrows/50);
+input_nrows <- 2258; #465126;
+sample_size <- 600; # round(input_nrows/50);
 # the !is.na(type) is to exclude the programatically created variables that 
 # might be anticipated in .dctold that got read in earlier
 fh <- subset(dct0,!is.na(type)) %>% 

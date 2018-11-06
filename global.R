@@ -93,6 +93,8 @@ dctfile <- paste0('dct_',basename(inputdata));
 levels_map_file <- 'levels_map.csv';
 #' random seed
 project_seed <- 20181018;
+#' Specific to this branch
+if(exists('inputdata_ncdb_ss')) inputdata_ncdb <- inputdata_ncdb_ss;
 # searchrep --------------------------------------------------------------------
 globalsearchrep <- rbind(
   c('\\[[0-9,]+ facts; [0-9,]+ patients\\]','')

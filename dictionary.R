@@ -32,7 +32,7 @@ dct0 <- full_join(
   # variable data types and offests for the FWF NCDB data
   ,.dctraw[grep('^infix ',.dctraw):(grep('[ ]*using ',.dctraw)-1)] %>% 
     gsub('(\\s|infix|-)+',' ',.) %>% paste0(collapse='\n') %>% 
-    read_delim(.,' ',trim_ws=T,col_names = F) %>% select(2:5) %>% 
+    read_delim(.,' ',trim_ws=T,col_names = F) %>% select(1:4) %>% 
     set_colnames(c('type','colname','start','stop'))
 );
 #' Merge on the manually edited columns from the static data dictionary if it

@@ -77,8 +77,11 @@ dat1$a_eth <- with(dat1
                                 paste0('non-Hisp ',a_race)
                               ,TRUE ~ 
                                 as.character(a_race)));
-#' Simplify the TNM_PATH_T variable
+#' Simplify TNM variables
 dat1$a_path_t <- gsub('A|B|C','',dat1$TNM_PATH_T) %>% gsub('p','pT',.);
+dat1$a_clin_t <- submulti(dat1$TNM_CLIN_T
+                          ,searchrep = cbind(c('A','B','C','c','p')
+                                             ,c('','','','cT','pT')));
 # subsets ---------------------------------------------------------------
 sbs0 <- alist(kidney=PRIMARY_SITE=='C649'
               # analyze stage IV separately
@@ -128,11 +131,15 @@ cph_uni <- list();
 message('Doing univariate fits');
 for(.ii in names(.cph0_update)) cph_uni[[.ii]]<-update(.cph0
                                                        ,.cph0_update[[.ii]]);
-cph_uni_tab <- cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
-  sapply(function(xx) cbind(tidy(xx),glance(xx)),simplify=F) %>% 
+message('Tabulating non-error results')
+cph_uni_tab <- #cph_uni[!sapply(cph_uni,is,'try-error')] %>% 
+  sapply(cph_uni,function(xx) {
+    oo<-try(cbind(tidy(xx),glance(xx)));
+    if(is(oo,'try-error')) c() else oo},simplify=F) %>%
   do.call(bind_rows,.) %>% arrange(desc(concordance)) %>% 
   mutate(term=gsub('`','',term),var=gsub(':::.*$','',term)
-         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc));
+         ,level=gsub('^.*:::','',term),p.adj.sc=p.adjust(p.value.sc)) %>% 
+  subset(!is.na(estimate));
 # save out ---------------------------------------------------------------------
 #' ## Save all the processed data to an rdata file 
 #' 
